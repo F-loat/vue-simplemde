@@ -24,11 +24,6 @@ export default {
         this.$emit('input', this.simplemde.value())
       })
     }
-  },
-  watch: {
-    value (val) {
-      this.simplemde.value(val)
-    }
   }
 }
 </script>
