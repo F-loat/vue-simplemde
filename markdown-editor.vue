@@ -1,5 +1,7 @@
 <template>
-  <textarea class="markdown-editor"></textarea>
+  <div class="markdown-editor">
+    <textarea></textarea>
+  </div>
 </template>
 
 <script>
@@ -9,15 +11,22 @@ import 'simplemde/dist/simplemde.min.css'
 export default {
   name: 'markdown-editor',
   props: {
-    value: String
+    value: String,
+    configs: {
+      type: Object
+    }
   },
   mounted () {
     this.initialize()
   },
   methods: {
     initialize () {
-      this.simplemde = new SimpleMDE({ element: this.$el })
-      this.simplemde.value(this.value)
+      var configs = this.configs
+      configs.element = configs.element || this.$el.firstChild
+      configs.initialValue = configs.initialValue || this.value
+
+      // 实例化编辑器
+      this.simplemde = new SimpleMDE(configs)
 
       // 绑定输入事件
       this.simplemde.codemirror.on('change', () => {
