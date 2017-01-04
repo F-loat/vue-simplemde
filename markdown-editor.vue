@@ -14,7 +14,10 @@ export default {
     value: String,
     previewClass: String,
     configs: {
-      type: Object
+      type: Object,
+      default () {
+        return {}
+      }
     }
   },
   mounted () {
@@ -27,7 +30,7 @@ export default {
       configs.initialValue = configs.initialValue || this.value
 
       // 开启代码高亮
-      if (configs.renderingConfig.codeSyntaxHighlighting) {
+      if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
         require.ensure([], () => {
           var theme = configs.renderingConfig.highlightingTheme || 'default'
           window.hljs = require('highlight.js')
@@ -47,10 +50,10 @@ export default {
       })
     },
     addPreviewClass () {
-      var _class = this.configs.renderingConfig.codeSyntaxHighlighting ? this.previewClass + ' hljs' : this.previewClass
+      var _class = (this.configs.renderingConfig && this.configs.renderingConfig.codeSyntaxHighlighting) ? (this.previewClass || '') + ' hljs' : (this.previewClass || '')
       var wrapper = this.simplemde.codemirror.getWrapperElement()
       var preview = document.createElement('div')
-      this.$el.lastChild.className += ' ' + _class
+      wrapper.nextSibling.className += ' ' + _class
       preview.className = 'editor-preview ' + _class
       wrapper.appendChild(preview)
     }
