@@ -29,6 +29,9 @@ export default {
       configs.element = configs.element || this.$el.firstChild
       configs.initialValue = configs.initialValue || this.value
 
+      // 实例化编辑器
+      this.simplemde = new SimpleMDE(configs)
+
       // 开启代码高亮
       if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
         require.ensure([], () => {
@@ -38,25 +41,29 @@ export default {
         }, 'highlight')
       }
 
-      // 实例化编辑器
-      this.simplemde = new SimpleMDE(configs)
-
       // 添加自定义 previewClass
-      this.addPreviewClass()
+      var _class = this.previewClass || ''
+      if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
+        _class += ' hljs'
+      }
+      this.addPreviewClass(_class)
 
       // 绑定输入事件
       this.simplemde.codemirror.on('change', () => {
         this.$emit('input', this.simplemde.value())
       })
     },
-    addPreviewClass () {
-      var _class = (this.configs.renderingConfig && this.configs.renderingConfig.codeSyntaxHighlighting) ? (this.previewClass || '') + ' hljs' : (this.previewClass || '')
+    addPreviewClass (_class) {
       var wrapper = this.simplemde.codemirror.getWrapperElement()
       var preview = document.createElement('div')
       wrapper.nextSibling.className += ' ' + _class
       preview.className = 'editor-preview ' + _class
       wrapper.appendChild(preview)
     }
+  },
+  destroyed () {
+    this.simplemde.toTextArea()
+    this.simplemde = null
   },
   watch: {
     value (val) {

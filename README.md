@@ -75,7 +75,7 @@ export default {
   },
   mounted: {
     console.log(this.simplemde)
-    this.simplemde.value('lalala')
+    this.simplemde.value('hellow')
 
     // You can catch the following list of events: https://codemirror.net/doc/manual.html#events
     this.simplemde.codemirror.on('change', () => {
