@@ -63,10 +63,10 @@ export default {
         indentWithTabs: false,
         initialValue: 'Hello world!',
         insertTexts: {
-          horizontalRule: [', '\n\n-----\n\n'],
+          horizontalRule: ['', '\n\n-----\n\n'],
           image: ['![](http://', ')'],
           link: ['[', '](http://)'],
-          table: [', '\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n']
+          table: ['', '\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n']
         },
         lineWrapping: false,
         parsingConfig: {
