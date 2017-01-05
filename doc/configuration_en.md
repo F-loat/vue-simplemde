@@ -1,4 +1,4 @@
-## Configuration
+## [SimpleMDE Configuration](https://github.com/NextStepWebs/simplemde-markdown-editor#Configuration)
 
 - **autoDownloadFontAwesome**: If set to `true`, force downloads Font Awesome (used for icons). If set to `false`, prevents downloading. Defaults to `undefined`, which will intelligently check whether Font Awesome has already been included, then download accordingly.
 - **autofocus**: If set to `true`, autofocuses the editor. Defaults to `false`.
@@ -15,7 +15,7 @@
 - **hideIcons**: An array of icon names to hide. Can be used to hide specific icons shown by default without completely customizing the toolbar.
 - **indentWithTabs**: If set to `false`, indent using spaces instead of tabs. Defaults to `true`.
 - **initialValue**: If set, will customize the initial value of the editor.
-- **insertTexts**: Customize how certain buttons that insert text behave. Takes an array with two elements. The first element will be the text inserted before the cursor or highlight, and the second element will be inserted after. For example, this is the default link value: `["[", "](http://)"]`.
+- **insertTexts**: Customize how certain buttons that insert text behave. Takes an array with two elements. The first element will be the text inserted before the cursor or highlight, and the second element will be inserted after. For example, this is the default link value: `['[', '](http://)']`.
   - horizontalRule
   - image
   - link
@@ -30,7 +30,7 @@
 - **promptURLs**: If set to `true`, a JS alert window appears asking for the link or image URL. Defaults to `false`.
 - **renderingConfig**: Adjust settings for parsing the Markdown during previewing (not editing).
   - **singleLineBreaks**: If set to `false`, disable parsing GFM single line breaks. Defaults to `true`.
-  - **codeSyntaxHighlighting**: If set to `true`, will highlight using [highlight.js](https://github.com/isagalaev/highlight.js). Defaults to `false`. To use this feature you must include highlight.js on your page. For example, include the script and the CSS files like:<br>`<script src="https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js"></script>`<br>`<link rel="stylesheet" href="https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css">`
+  - **codeSyntaxHighlighting**: If set to `true`, will highlight using [highlight.js](https://github.com/isagalaev/highlight.js). Defaults to `false`. To use this feature you must include highlight.js on your page. For example, include the script and the CSS files like:<br>`<script src='https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js'></script>`<br>`<link rel='stylesheet' href='https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css'>`
 - **shortcuts**: Keyboard shortcuts associated with this instance. Defaults to the [array of shortcuts](#keyboard-shortcuts).
 - **showIcons**: An array of icon names to show. Can be used to show specific icons hidden by default without completely customizing the toolbar.
 - **spellChecker**: If set to `false`, disable the spell checker. Defaults to `true`.
@@ -43,79 +43,85 @@
 
 ```JavaScript
 // Most options demonstrate the non-default behavior
-var simplemde = new SimpleMDE({
-  autofocus: true,
-  autosave: {
-    enabled: true,
-    uniqueId: "MyUniqueID",
-    delay: 1000,
-  },
-  blockStyles: {
-    bold: "__",
-    italic: "_"
-  },
-  element: document.getElementById("MyID"),
-  forceSync: true,
-  hideIcons: ["guide", "heading"],
-  indentWithTabs: false,
-  initialValue: "Hello world!",
-  insertTexts: {
-    horizontalRule: ["", "\n\n-----\n\n"],
-    image: ["![](http://", ")"],
-    link: ["[", "](http://)"],
-    table: ["", "\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n"],
-  },
-  lineWrapping: false,
-  parsingConfig: {
-    allowAtxHeaderWithoutSpace: true,
-    strikethrough: false,
-    underscoresBreakWords: true,
-  },
-  placeholder: "Type here...",
-  previewRender: function(plainText) {
-    return customMarkdownParser(plainText); // Returns HTML from a custom parser
-  },
-  previewRender: function(plainText, preview) { // Async method
-    setTimeout(function(){
-      preview.innerHTML = customMarkdownParser(plainText);
-    }, 250);
+export default {
+  data () {
+    return {
+      configs: {
+        autofocus: true,
+        autosave: {
+          enabled: true,
+          uniqueId: 'MyUniqueID',
+          delay: 1000
+        },
+        blockStyles: {
+          bold: '__',
+          italic: '_'
+        },
+        element: document.getElementById('MyID'),
+        forceSync: true,
+        hideIcons: ['guide', 'heading'],
+        indentWithTabs: false,
+        initialValue: 'Hello world!',
+        insertTexts: {
+          horizontalRule: [', '\n\n-----\n\n'],
+          image: ['![](http://', ')'],
+          link: ['[', '](http://)'],
+          table: [', '\n\n| Column 1 | Column 2 | Column 3 |\n| -------- | -------- | -------- |\n| Text     | Text      | Text     |\n\n']
+        },
+        lineWrapping: false,
+        parsingConfig: {
+          allowAtxHeaderWithoutSpace: true,
+          strikethrough: false,
+          underscoresBreakWords: true
+        },
+        placeholder: 'Type here...',
+        previewRender: function(plainText) {
+          return customMarkdownParser(plainText) // Returns HTML from a custom parser
+        },
+        previewRender: function(plainText, preview) { // Async method
+          setTimeout(function(){
+            preview.innerHTML = customMarkdownParser(plainText)
+          }, 250)
 
-    return "Loading...";
-  },
-  promptURLs: true,
-  renderingConfig: {
-    singleLineBreaks: false,
-    codeSyntaxHighlighting: true,
-  },
-  shortcuts: {
-    drawTable: "Cmd-Alt-T"
-  },
-  showIcons: ["code", "table"],
-  spellChecker: false,
-  status: false,
-  status: ["autosave", "lines", "words", "cursor"], // Optional usage
-  status: ["autosave", "lines", "words", "cursor", {
-    className: "keystrokes",
-    defaultValue: function(el) {
-      this.keystrokes = 0;
-      el.innerHTML = "0 Keystrokes";
-    },
-    onUpdate: function(el) {
-      el.innerHTML = ++this.keystrokes + " Keystrokes";
+          return 'Loading...'
+        },
+        promptURLs: true,
+        renderingConfig: {
+          singleLineBreaks: false,
+          codeSyntaxHighlighting: true
+        },
+        shortcuts: {
+          drawTable: 'Cmd-Alt-T'
+        },
+        showIcons: ['code', 'table'],
+        spellChecker: false,
+        status: false,
+        status: ['autosave', 'lines', 'words', 'cursor'], // Optional usage
+        status: ['autosave', 'lines', 'words', 'cursor', {
+          className: 'keystrokes',
+          defaultValue: function(el) {
+            this.keystrokes = 0
+            el.innerHTML = '0 Keystrokes'
+          },
+          onUpdate: function(el) {
+            el.innerHTML = ++this.keystrokes + ' Keystrokes'
+          }
+        }], // Another optional usage, with a custom status bar item that counts keystrokes
+        styleSelectedText: false,
+        tabSize: 4,
+        toolbar: false,
+        toolbarTips: false
+      }
     }
-  }], // Another optional usage, with a custom status bar item that counts keystrokes
-  styleSelectedText: false,
-  tabSize: 4,
-  toolbar: false,
-  toolbarTips: false,
-});
+  }
+}
 ```
 
 #### Toolbar icons
 
-Below are the built-in toolbar icons (only some of which are enabled by default), which can be reorganized however you like. "Name" is the name of the icon, referenced in the JS. "Action" is either a function or a URL to open. "Class" is the class given to the icon. "Tooltip" is the small tooltip that appears via the `title=""` attribute. Note that shortcut hints are added automatically and reflect the specified action if it has a keybind assigned to it (i.e. with the value of `action` set to `bold` and that of `tooltip` set to `Bold`, the final text the user will see would be "Bold (Ctrl-B)").
+Below are the built-in toolbar icons (only some of which are enabled by default), which can be reorganized however you like. 'Name' is the name of the icon, referenced in the JS. 'Action' is either a function or a URL to open. 'Class' is the class given to the icon. 'Tooltip' is the small tooltip that appears via the `title='` attribute. Note that shortcut hints are added automatically and reflect the specified action if it has a keybind assigned to it (i.e. with the value of `action` set to `bold` and that of `tooltip` set to `Bold`, the final text the user will see would be 'Bold (Ctrl-B)').
 
-Additionally, you can add a separator between any icons by adding `"|"` to the toolbar array.
+Additionally, you can add a separator between any icons by adding `'|'` to the toolbar array.
 
 Name | Action | Tooltip<br>Class
 :--- | :----- | :--------------
@@ -146,30 +152,42 @@ Customize the toolbar using the `toolbar` option like:
 
 ```JavaScript
 // Customize only the order of existing buttons
-var simplemde = new SimpleMDE({
-  toolbar: ["bold", "italic", "heading", "|", "quote"],
-});
+export default {
+  data () {
+    return {
+      configs: {
+        toolbar: ['bold', 'italic', 'heading', '|', 'quote']
+      }
+    }
+  }
+}
 
 // Customize all information and/or add your own icons
-var simplemde = new SimpleMDE({
-  toolbar: [{
-      name: "bold",
-      action: SimpleMDE.toggleBold,
-      className: "fa fa-bold",
-      title: "Bold",
-    },
-    {
-      name: "custom",
-      action: function customFunction(editor){
-        // Add your own code
-      },
-      className: "fa fa-star",
-      title: "Custom Button",
-    },
-    "|", // Separator
-    ...
-  ],
-});
+export default {
+  data () {
+    return {
+      configs: {
+        toolbar: [{
+            name: 'bold',
+            action: SimpleMDE.toggleBold,
+            className: 'fa fa-bold',
+            title: 'Bold'
+          },
+          {
+            name: 'custom',
+            action: function customFunction(editor){
+              // Add your own code
+            },
+            className: 'fa fa-star',
+            title: 'Custom Button'
+          },
+          '|' // Separator
+          ...
+        ]
+      }
+    }
+  }
+}
 ```
 
 #### Keyboard shortcuts
@@ -178,34 +196,40 @@ SimpleMDE comes with an array of predefined keyboard shortcuts, but they can be 
 
 Shortcut | Action
 :------- | :-----
-*Cmd-'* | "toggleBlockquote"
-*Cmd-B* | "toggleBold"
-*Cmd-E* | "cleanBlock"
-*Cmd-H* | "toggleHeadingSmaller"
-*Cmd-I* | "toggleItalic"
-*Cmd-K* | "drawLink"
-*Cmd-L* | "toggleUnorderedList"
-*Cmd-P* | "togglePreview"
-*Cmd-Alt-C* | "toggleCodeBlock"
-*Cmd-Alt-I* | "drawImage"
-*Cmd-Alt-L* | "toggleOrderedList"
-*Shift-Cmd-H* | "toggleHeadingBigger"
-*F9* | "toggleSideBySide"
-*F11* | "toggleFullScreen"
+*Cmd-'* | 'toggleBlockquote'
+*Cmd-B* | 'toggleBold'
+*Cmd-E* | 'cleanBlock'
+*Cmd-H* | 'toggleHeadingSmaller'
+*Cmd-I* | 'toggleItalic'
+*Cmd-K* | 'drawLink'
+*Cmd-L* | 'toggleUnorderedList'
+*Cmd-P* | 'togglePreview'
+*Cmd-Alt-C* | 'toggleCodeBlock'
+*Cmd-Alt-I* | 'drawImage'
+*Cmd-Alt-L* | 'toggleOrderedList'
+*Shift-Cmd-H* | 'toggleHeadingBigger'
+*F9* | 'toggleSideBySide'
+*F11* | 'toggleFullScreen'
 
 Here is how you can change a few, while leaving others untouched:
 
 ```JavaScript
-var simplemde = new SimpleMDE({
-  shortcuts: {
-    "toggleOrderedList": "Ctrl-Alt-K", // alter the shortcut for toggleOrderedList
-    "toggleCodeBlock": null, // unbind Ctrl-Alt-C
-    "drawTable": "Cmd-Alt-T" // bind Cmd-Alt-T to drawTable action, which doesn't come with a default shortcut
+export default {
+  data () {
+    return {
+      configs: {
+        shortcuts: {
+          'toggleOrderedList': 'Ctrl-Alt-K', // alter the shortcut for toggleOrderedList
+          'toggleCodeBlock': null, // unbind Ctrl-Alt-C
+          'drawTable': 'Cmd-Alt-T' // bind Cmd-Alt-T to drawTable action, which doesn't come with a default shortcut
+        }
+      }
+    }
   }
-});
+}
 ```
 
-Shortcuts are automatically converted between platforms. If you define a shortcut as "Cmd-B", on PC that shortcut will be changed to "Ctrl-B". Conversely, a shortcut defined as "Ctrl-B" will become "Cmd-B" for Mac users.
+Shortcuts are automatically converted between platforms. If you define a shortcut as 'Cmd-B', on PC that shortcut will be changed to 'Ctrl-B'. Conversely, a shortcut defined as 'Ctrl-B' will become 'Cmd-B' for Mac users.
 
 The list of actions that can be bound is the same as the list of built-in actions available for [toolbar buttons](#toolbar-icons).
 

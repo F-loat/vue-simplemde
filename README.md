@@ -123,6 +123,7 @@ import 'github-markdown-css'
 ## Dependencies
 
 * [SimpleMDE](https://github.com/NextStepWebs/simplemde-markdown-editor)
+* [Highlight.js](https://github.com/isagalaev/highlight.js)
 
 ## Licence
 
