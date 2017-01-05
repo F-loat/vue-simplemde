@@ -20,10 +20,12 @@ npm install vue-simplemde --save
 // import with ES6
 import Vue from 'vue'
 import VueSimplemde from 'vue-simplemde'
+import 'simplemde/dist/simplemde.min.css'
 
 // require with Webpack/Node.js
 var Vue = require('vue')
 var VueSimplemde = require('vue-simplemde')
+require('simplemde/dist/simplemde.min.css')
 
 // use
 Vue.use(VueSimplemde)
@@ -31,9 +33,12 @@ Vue.use(VueSimplemde)
 
 ``` javascript
 // or use with component(ES6)
-import { markdownEditor } from 'vue-simplemde'
 
-// use
+// main.js
+import 'simplemde/dist/simplemde.min.css'
+
+// component
+import { markdownEditor } from 'vue-simplemde'
 export default {
   components: {
     markdownEditor

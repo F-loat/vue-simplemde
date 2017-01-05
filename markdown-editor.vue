@@ -6,7 +6,6 @@
 
 <script>
 import SimpleMDE from 'simplemde'
-import 'simplemde/dist/simplemde.min.css'
 
 export default {
   name: 'markdown-editor',
@@ -25,7 +24,7 @@ export default {
   },
   methods: {
     initialize () {
-      var configs = this.configs
+      var configs = JSON.parse(JSON.stringify(this.configs))
       configs.element = configs.element || this.$el.firstChild
       configs.initialValue = configs.initialValue || this.value
 
@@ -56,6 +55,12 @@ export default {
       wrapper.nextSibling.className += ' ' + _class
       preview.className = 'editor-preview ' + _class
       wrapper.appendChild(preview)
+    }
+  },
+  watch: {
+    value (val) {
+      if (val === this.simplemde.value()) return
+      this.simplemde.value(val)
     }
   }
 }
