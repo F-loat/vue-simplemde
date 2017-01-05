@@ -6,6 +6,7 @@
 
 <script>
 import SimpleMDE from 'simplemde'
+import 'simplemde/dist/simplemde.min.css'
 
 export default {
   name: 'markdown-editor',

@@ -238,7 +238,7 @@ The list of actions that can be bound is the same as the list of built-in action
 To change the minimum height (before it starts auto-growing):
 
 ```CSS
-.CodeMirror, .CodeMirror-scroll {
+.markdown-editor .CodeMirror, .markdown-editor .CodeMirror-scroll {
   min-height: 200px;
 }
 ```
@@ -246,7 +246,7 @@ To change the minimum height (before it starts auto-growing):
 Or, you can keep the height static:
 
 ```CSS
-.CodeMirror {
+.markdown-editor .CodeMirror {
   height: 300px;
 }
 ```
