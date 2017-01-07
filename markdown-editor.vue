@@ -6,13 +6,18 @@
 
 <script>
 import SimpleMDE from 'simplemde'
-import 'simplemde/dist/simplemde.min.css'
 
 export default {
   name: 'markdown-editor',
   props: {
     value: String,
     previewClass: String,
+    customTheme: {
+      type: Boolean,
+      default () {
+        return false
+      }
+    },
     configs: {
       type: Object,
       default () {
@@ -32,13 +37,18 @@ export default {
       // 实例化编辑器
       this.simplemde = new SimpleMDE(configs)
 
-      // 开启代码高亮
+      // 判断是否开启代码高亮
       if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
         require.ensure([], () => {
           var theme = configs.renderingConfig.highlightingTheme || 'default'
           window.hljs = require('highlight.js')
           require('highlight.js/styles/' + theme + '.css')
         }, 'highlight')
+      }
+
+      // 判断是否引入样式文件
+      if (!this.customTheme) {
+        require('simplemde/dist/simplemde.min.css')
       }
 
       // 添加自定义 previewClass

@@ -95,7 +95,23 @@ export default {
 }
 ```
 
-## [Editor Theme](https://github.com/xcatliu/simplemde-theme-base/wiki/List-of-themes)
+## Editor Theme ([simplemde-theme-base](https://github.com/xcatliu/simplemde-theme-base/wiki/List-of-themes))
+> e.g. 使用simplemde-theme-base主题
+
+### install
+```
+$ npm install --save simplemde-theme-base
+```
+
+### use
+``` html
+<markdown-editor :custom-theme="true"></markdown-editor>
+```
+
+``` javascript
+import 'simplemde-theme-base/dist/simplemde-theme-base.min.css'
+```
+
 
 ## Markdown style
 > e.g. 使用Github的markdown样式
