@@ -1,4 +1,4 @@
-## [SimpleMDE Configuration](https://github.com/NextStepWebs/simplemde-markdown-editor#Configuration)
+## [SimpleMDE Configuration](https://github.com/NextStepWebs/simplemde-markdown-editor#configuration)
 
 - **autoDownloadFontAwesome**: If set to `true`, force downloads Font Awesome (used for icons). If set to `false`, prevents downloading. Defaults to `undefined`, which will intelligently check whether Font Awesome has already been included, then download accordingly.
 - **autofocus**: If set to `true`, autofocuses the editor. Defaults to `false`.

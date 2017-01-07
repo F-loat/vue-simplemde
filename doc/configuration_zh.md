@@ -1,4 +1,4 @@
-## [SimpleMDE 配置](https://github.com/NextStepWebs/simplemde-markdown-editor#Configuration)
+## [SimpleMDE 配置](https://github.com/NextStepWebs/simplemde-markdown-editor#configuration)
 
 - **autoDownloadFontAwesome**: 如果设置为 `true`, force downloads Font Awesome (used for icons). If set to `false`, prevents downloading. Defaults to `undefined`, which will intelligently check whether Font Awesome has already been included, then download accordingly.
 - **autofocus**: If set to `true`, autofocuses the editor. Defaults to `false`.
@@ -42,7 +42,7 @@
 - **toolbarTips**: If set to `false`, disable toolbar button tips. Defaults to `true`.
 
 ```JavaScript
-// Most options demonstrate the non-default behavior
+// 以下大多数选项为非默认行为
 export default {
   data () {
     return {
@@ -76,14 +76,13 @@ export default {
         },
         placeholder: 'Type here...',
         previewRender: function(plainText) {
-          return customMarkdownParser(plainText) // Returns HTML from a custom parser
+          return customMarkdownParser(plainText) // 返回HTML自定义解析器
         },
-        previewRender: function(plainText, preview) { // Async method
-          setTimeout(function(){
+        previewRender: function(plainText, preview) { // 异步方法
+          setTimeout(function () {
             preview.innerHTML = customMarkdownParser(plainText)
           }, 250)
-
-          return 'Loading...'
+          return '加载中...'
         },
         promptURLs: true,
         renderingConfig: {
@@ -117,41 +116,41 @@ export default {
 }
 ```
 
-#### Toolbar icons
+#### 工具栏
 
-Below are the built-in toolbar icons (only some of which are enabled by default), which can be reorganized however you like. 'Name' is the name of the icon, referenced in the JS. 'Action' is either a function or a URL to open. 'Class' is the class given to the icon. 'Tooltip' is the small tooltip that appears via the `title='` attribute. Note that shortcut hints are added automatically and reflect the specified action if it has a keybind assigned to it (i.e. with the value of `action` set to `bold` and that of `tooltip` set to `Bold`, the final text the user will see would be 'Bold (Ctrl-B)').
+下面是内置的工具栏图标（只有一些默认启用），你可以根据喜好重新排列。如果按钮有快捷键，将自动显示提示（即如果把`action`设置为`toggleBold`，`title`设置`加粗`，最终的提示文本将为`加粗（Ctrl-B）`）。
 
-Additionally, you can add a separator between any icons by adding `'|'` to the toolbar array.
+此外，你可以在工具栏数组中任意两个图标之间添加一个分离线`'|'`。
 
-Name | Action | Tooltip<br>Class
+name | action | title<br>className
 :--- | :----- | :--------------
-bold | toggleBold | Bold<br>fa fa-bold
-italic | toggleItalic | Italic<br>fa fa-italic
-strikethrough | toggleStrikethrough | Strikethrough<br>fa fa-strikethrough
-heading | toggleHeadingSmaller | Heading<br>fa fa-header
-heading-smaller | toggleHeadingSmaller | Smaller Heading<br>fa fa-header
-heading-bigger | toggleHeadingBigger | Bigger Heading<br>fa fa-lg fa-header
-heading-1 | toggleHeading1 | Big Heading<br>fa fa-header fa-header-x fa-header-1
-heading-2 | toggleHeading2 | Medium Heading<br>fa fa-header fa-header-x fa-header-2
-heading-3 | toggleHeading3 | Small Heading<br>fa fa-header fa-header-x fa-header-3
-code | toggleCodeBlock | Code<br>fa fa-code
-quote | toggleBlockquote | Quote<br>fa fa-quote-left
-unordered-list | toggleUnorderedList | Generic List<br>fa fa-list-ul
-ordered-list | toggleOrderedList | Numbered List<br>fa fa-list-ol
-clean-block | cleanBlock | Clean block<br>fa fa-eraser fa-clean-block
-link | drawLink | Create Link<br>fa fa-link
-image | drawImage | Insert Image<br>fa fa-picture-o
-table | drawTable | Insert Table<br>fa fa-table
-horizontal-rule | drawHorizontalRule | Insert Horizontal Line<br>fa fa-minus
-preview | togglePreview | Toggle Preview<br>fa fa-eye no-disable
-side-by-side | toggleSideBySide | Toggle Side by Side<br>fa fa-columns no-disable no-mobile
-fullscreen | toggleFullScreen | Toggle Fullscreen<br>fa fa-arrows-alt no-disable no-mobile
-guide | [This link](https://simplemde.com/markdown-guide) | Markdown Guide<br>fa fa-question-circle
+bold | toggleBold | 加粗<br>fa fa-bold
+italic | toggleItalic | 斜体<br>fa fa-italic
+strikethrough | toggleStrikethrough | 删除线<br>fa fa-strikethrough
+heading | toggleHeadingSmaller | 标题<br>fa fa-header
+heading-smaller | toggleHeadingSmaller | 缩小标题<br>fa fa-header
+heading-bigger | toggleHeadingBigger | 增大标题<br>fa fa-lg fa-header
+heading-1 | toggleHeading1 | 大标题<br>fa fa-header fa-header-x fa-header-1
+heading-2 | toggleHeading2 | 中等标题<br>fa fa-header fa-header-x fa-header-2
+heading-3 | toggleHeading3 | 小标题<br>fa fa-header fa-header-x fa-header-3
+code | toggleCodeBlock | 代码块<br>fa fa-code
+quote | toggleBlockquote | 引用<br>fa fa-quote-left
+unordered-list | toggleUnorderedList | 无序列表<br>fa fa-list-ul
+ordered-list | toggleOrderedList | 有序列表<br>fa fa-list-ol
+clean-block | cleanBlock | 清除格式<br>fa fa-eraser fa-clean-block
+link | drawLink | 插入链接<br>fa fa-link
+image | drawImage | 插入图片<br>fa fa-picture-o
+table | drawTable | 插入表格<br>fa fa-table
+horizontal-rule | drawHorizontalRule | 插入水平线<br>fa fa-minus
+preview | togglePreview | 预览<br>fa fa-eye no-disable
+side-by-side | toggleSideBySide | 全屏预览<br>fa fa-columns no-disable no-mobile
+fullscreen | toggleFullScreen | 全屏<br>fa fa-arrows-alt no-disable no-mobile
+guide | [跳转链接](https://simplemde.com/markdown-guide) | Markdown引导<br>fa fa-question-circle
 
-Customize the toolbar using the `toolbar` option like:
+使用`toolbar`选项自定义工具栏：
 
 ```JavaScript
-// Customize only the order of existing buttons
+// 仅自定义现有按钮的顺序
 export default {
   data () {
     return {
@@ -162,7 +161,7 @@ export default {
   }
 }
 
-// Customize all information and/or add your own icons
+// 自定义所有信息和/或添加你的图标
 export default {
   data () {
     return {
@@ -171,17 +170,17 @@ export default {
             name: 'bold',
             action: SimpleMDE.toggleBold,
             className: 'fa fa-bold',
-            title: 'Bold'
+            title: '加粗'
           },
           {
             name: 'custom',
-            action: function customFunction(editor){
-              // Add your own code
+            action: function customFunction (editor) {
+              // 添加你的代码
             },
             className: 'fa fa-star',
-            title: 'Custom Button'
+            title: '自定义按钮'
           },
-          '|' // Separator
+          '|' // 分隔符
           ...
         ]
       }
@@ -192,14 +191,14 @@ export default {
 
 #### 快捷键
 
-simplemde带有预定义键盘快捷键的数组，可以用一个配置选项改变。默认的列表如下：
+SimpleMDE带有预定义键盘快捷键的数组，可以用一个配置选项改变。默认的列表如下：
 
 快捷键 | 操作
 :------- | :-----
-*Cmd-'* | 'toggleBlockquote'
+*Cmd-'* | '引用'
 *Cmd-B* | '加粗'
-*Cmd-E* | 'cleanBlock'
-*Cmd-H* | '降低标题级别'
+*Cmd-E* | '清除格式'
+*Cmd-H* | '缩小标题'
 *Cmd-I* | '斜体'
 *Cmd-K* | '插入链接'
 *Cmd-L* | '插入无序列表'
@@ -207,7 +206,7 @@ simplemde带有预定义键盘快捷键的数组，可以用一个配置选项�
 *Cmd-Alt-C* | '插入代码块'
 *Cmd-Alt-I* | '插入图片'
 *Cmd-Alt-L* | '插入有序列表'
-*Shift-Cmd-H* | '提高标题级别'
+*Shift-Cmd-H* | '增大标题'
 *F9* | '全屏预览'
 *F11* | '全屏'
 
