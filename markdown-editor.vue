@@ -85,6 +85,10 @@ export default {
 </script>
 
 <style>
+.markdown-editor .markdown-body {
+  padding: 0.5em
+}
+
 .markdown-editor .hljs {
   display: none
 }

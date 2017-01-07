@@ -129,6 +129,10 @@ $ npm install --save github-markdown-css
 ```
 
 ``` javascript
+// 使用默认编辑器主题时
+require.ensure([], () => require('github-markdown-css'), 'markdown-style')
+
+// 使用自定义编辑器主题时
 import 'github-markdown-css'
 ```
 
