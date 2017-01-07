@@ -21,7 +21,7 @@
 
 <script>
 import { markdownEditor } from 'vue-simplemde'
-import 'github-markdown-css'
+require.ensure([], () => require('github-markdown-css'), 'markdown-style')
 
 export default {
   name: 'index',
