@@ -92,8 +92,8 @@ body {
 }
 
 .markdown-editor .CodeMirror {
-  height: 20vh;
-  min-height: 20vh;
+  height: 22vh;
+  min-height: 22vh;
 }
 
 /* 使用highlight主题的代码块背景 */
