@@ -95,7 +95,9 @@ export default {
 }
 ```
 
-## Theme
+## [Editor Theme](https://github.com/xcatliu/simplemde-theme-base/wiki/List-of-themes)
+
+## Markdown style
 > e.g. 使用Github的markdown样式
 
 [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
@@ -128,4 +130,4 @@ import 'github-markdown-css'
 
 vue-simplemde is open source and released under the MIT Licence.
 
-Copyright (c) 2016 F-loat
+Copyright (c) 2017 F-loat
