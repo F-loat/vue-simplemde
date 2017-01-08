@@ -1,45 +1,45 @@
 ## [SimpleMDE 配置](https://github.com/NextStepWebs/simplemde-markdown-editor#configuration)
 
-- **autoDownloadFontAwesome**: 如果设置为 `true`, force downloads Font Awesome (used for icons). If set to `false`, prevents downloading. Defaults to `undefined`, which will intelligently check whether Font Awesome has already been included, then download accordingly.
-- **autofocus**: If set to `true`, autofocuses the editor. Defaults to `false`.
-- **autosave**: *Saves the text that's being written and will load it back in the future. It will forget the text when the form it's contained in is submitted.*
-  - **enabled**: If set to `true`, autosave the text. Defaults to `false`.
-  - **delay**: Delay between saves, in milliseconds. Defaults to `10000` (10s).
-  - **uniqueId**: You must set a unique string identifier so that SimpleMDE can autosave. Something that separates this from other instances of SimpleMDE elsewhere on your website.
-- **blockStyles**: Customize how certain buttons that style blocks of text behave.
-  - **bold** Can be set to `**` or `__`. Defaults to `**`.
-  - **code** Can be set to  ```` ``` ```` or `~~~`.  Defaults to ```` ``` ````.
-  - **italic** Can be set to `*` or `_`. Defaults to `*`.
-- **element**: The DOM element for the textarea to use. Defaults to the first textarea on the page.
-- **forceSync**: If set to `true`, force text changes made in SimpleMDE to be immediately stored in original textarea. Defaults to `false`.
-- **hideIcons**: An array of icon names to hide. Can be used to hide specific icons shown by default without completely customizing the toolbar.
-- **indentWithTabs**: If set to `false`, indent using spaces instead of tabs. Defaults to `true`.
-- **initialValue**: If set, will customize the initial value of the editor.
-- **insertTexts**: Customize how certain buttons that insert text behave. Takes an array with two elements. The first element will be the text inserted before the cursor or highlight, and the second element will be inserted after. For example, this is the default link value: `['[', '](http://)']`.
+- **autoDownloadFontAwesome**: 如果设置为 `true`，强制下载Font Awesome (用于图标)，如果设置为 `false`，阻止下载，默认值为 `undefined`，这将智能检查字体是否已经包括Font Awesome，然后进行相应操作。
+- **autofocus**: 如果设置为 `true`，将自动聚焦编辑器，默认值为 `false`。
+- **autosave**: *自动保存已经输入的文本，下次打开时会进行加载，文本提交时会清空保存的内容。*
+  - **enabled**: 如果设置为 `true`将自动保存输入的文本，默认值为 `false`。
+  - **delay**: 自动保存的间隔时间，单位为毫秒，默认值为 `10000` (10s)。
+  - **uniqueId**: 你必须设置一个唯一的字符串标识符来与其他网站的SimpleMDE存储做区分。
+- **blockStyles**: 自定义文本样式块某些按钮的行为。
+  - **bold** 可以设置为 `**` 或 `__`，默认值为 `**`。
+  - **code** 可以设置为  ```` ``` ```` 或 `~~~`，默认值为 ```` ``` ````。
+  - **italic** 可以设置为 `*` 或 `_`，默认值为 `*`。
+- **element**: 要绑定的textarea元素，默认值为文档中的第一个textarea元素。
+- **forceSync**: 如果设置为 `true`，在SimpleMDE中改变文本将立即同步至原textarea元素，默认值为 `false`。
+- **hideIcons**: 需要隐藏的图标名称数组，可用于隐藏默认显示的特定图标，而不完全自定义工具栏。
+- **indentWithTabs**: 如果设置为 `false`，用空格代替制表符缩进，默认值为 `true`。
+- **initialValue**: 编辑器初始值。
+- **insertTexts**: 通过带两个元素的数组来自定义插入文本按钮的行为，第一个元素将在光标或高亮显示之前插入，第二个元素将在之后插入。例如，链接的默认值： `['[', '](http://)']`。
   - horizontalRule
   - image
   - link
   - table
-- **lineWrapping**: If set to `false`, disable line wrapping. Defaults to `true`.
-- **parsingConfig**: Adjust settings for parsing the Markdown during editing (not previewing).
-  - **allowAtxHeaderWithoutSpace**: If set to `true`, will render headers without a space after the `#`. Defaults to `false`.
-  - **strikethrough**: If set to `false`, will not process GFM strikethrough syntax. Defaults to `true`.
-  - **underscoresBreakWords**: If set to `true`, let underscores be a delimiter for separating words. Defaults to `false`.
-- **placeholder**: Custom placeholder that should be displayed
-- **previewRender**: Custom function for parsing the plaintext Markdown and returning HTML. Used when user previews.
-- **promptURLs**: If set to `true`, a JS alert window appears asking for the link or image URL. Defaults to `false`.
-- **renderingConfig**: Adjust settings for parsing the Markdown during previewing (not editing).
-  - **singleLineBreaks**: If set to `false`, disable parsing GFM single line breaks. Defaults to `true`.
-  - **codeSyntaxHighlighting**: If set to `true`, will highlight using [highlight.js](https://github.com/isagalaev/highlight.js). Defaults to `false`. To use this feature you must include highlight.js on your page. For example, include the script and the CSS files like:<br>`<script src='https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js'></script>`<br>`<link rel='stylesheet' href='https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css'>`
-- **shortcuts**: Keyboard shortcuts associated with this instance. Defaults to the [array of shortcuts](#keyboard-shortcuts).
-- **showIcons**: An array of icon names to show. Can be used to show specific icons hidden by default without completely customizing the toolbar.
-- **spellChecker**: If set to `false`, disable the spell checker. Defaults to `true`.
-- **status**: If set to `false`, hide the status bar. Defaults to the array of built-in status bar items.
-  - Optionally, you can set an array of status bar items to include, and in what order. You can even define your own custom status bar items.
-- **styleSelectedText**: If set to `false`, remove the `CodeMirror-selectedtext` class from selected lines. Defaults to `true`.
-- **tabSize**: If set, customize the tab size. Defaults to `2`.
-- **toolbar**: If set to `false`, hide the toolbar. Defaults to the [array of icons](#toolbar-icons).
-- **toolbarTips**: If set to `false`, disable toolbar button tips. Defaults to `true`.
+- **lineWrapping**: 如果设置为 `false`，禁用自动换行，默认值为 `true`。
+- **parsingConfig**: Markdown解析配置。
+  - **allowAtxHeaderWithoutSpace**: 如果设置为 `true`将不渲染`#`后的空格，默认值为 `false`。
+  - **strikethrough**: 如果设置为 `false`将不对GFM语法进行解析，默认值为 `true`。
+  - **underscoresBreakWords**: 如果设置为 `true`将使用下划线作为分隔符，默认值为 `false`。
+- **placeholder**: 自定义占位符。
+- **previewRender**: 自定义Markdown解析器，预览时调用。
+- **promptURLs**: 如果设置为 `true`将出现一个JS警告窗口来获取链接或图片的网址，默认值为 `false`。
+- **renderingConfig**: Markdown渲染配置。
+  - **singleLineBreaks**: 如果设置为 `false`将禁用解析GFM换行符，默认值为 `true`。
+  - **codeSyntaxHighlighting**: 如果设置为 `true`，将使用[highlight.js](https://github.com/isagalaev/highlight.js)进行高亮显示，默认值为 `false`。要使用这个功能，你必须在你的网页中引入highlight.js。 原版需像下面这样手动引入，本插件已集成highlight.js无需再次引入。<br>`<script src='https://cdn.jsdelivr.net/highlight.js/latest/highlight.min.js'></script>`<br>`<link rel='stylesheet' href='https://cdn.jsdelivr.net/highlight.js/latest/styles/github.min.css'>`
+- **shortcuts**: 快捷键，默认值为[快捷键数组](#keyboard-shortcuts)。
+- **showIcons**: 图标名称数组，可用于显示默认隐藏的特定图标，而不完全自定义工具栏。
+- **spellChecker**: 如果设置为 `false`将禁用拼写检查，默认值为 `true`。
+- **status**: 如果设置为 `false`，隐藏状态栏。默认值为包含内置状态栏项目的数组。
+  - 也可以设置状态栏项的数组并重新排序。你甚至可以自定义状态栏项目。
+- **styleSelectedText**: 如果设置为 `false`将移除被选择文本的`CodeMirror-selectedtext`类，默认值为 `true`。
+- **tabSize**: 自定义tab大小，默认值为 `2`。
+- **toolbar**: 如果设置为 `false`将隐藏工具栏，默认值为[图标数组](#toolbar-icons)。
+- **toolbarTips**: 如果设置为 `false`将不显示工具栏提示，默认值为 `true`。
 
 ```JavaScript
 // 以下大多数选项为非默认行为

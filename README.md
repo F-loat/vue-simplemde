@@ -1,5 +1,5 @@
 # Vue-SimpleMDE
-> SimpleMDE - Markdown Editor component for Vue.js
+> Markdown Editor component for Vue.js
 
 [![NPM](https://nodei.co/npm/vue-simplemde.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-simplemde/)
 
