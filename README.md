@@ -77,16 +77,17 @@ export default {
     console.log(this.simplemde)
     this.simplemde.value('hellow')
 
-    // You can catch the following list of events: https://codemirror.net/doc/manual.html#events
-    this.simplemde.codemirror.on('change', () => {
-      console.log(this.simplemde.value())
+    // 'change'事件已经绑定，可以通过@input指定处理器
+    // 如果需要，你可以自行绑定这个列表中的其他事件: https://codemirror.net/doc/manual.html#events
+    this.simplemde.codemirror.on('beforeChange', (instance, changeObj) => {
+      // do some things
     })
 
-    // Removing SimpleMDE from textarea
+    // 移除SimpleMDE，组件销毁时会自动调用
     this.simplemde.toTextArea()
     this.simplemde = null
 
-    // Useful methods
+    // 一些有用的方法
     this.simplemde.isPreviewActive() // returns boolean
     this.simplemde.isSideBySideActive() // returns boolean
     this.simplemde.isFullscreenActive() // returns boolean
