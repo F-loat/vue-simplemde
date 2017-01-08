@@ -54,13 +54,34 @@ export default {
 ```
 
 ``` javascript
-// 获取编辑器对象，添加事件绑定
+import { markdownEditor } from 'vue-simplemde'
+
+// 基础用法
 export default {
+  components: {
+    markdownEditor
+  },
   data () {
     return {
-      content: 'lalala',
+      content: '',
       configs: {
-        status: false,
+        spellChecker: false // 禁用拼写检查
+      }
+    }
+  }
+}
+
+// 添加更多配置，获取编辑器对象，添加事件绑定，判断编辑器状态
+export default {
+  components: {
+    markdownEditor
+  },
+  data () {
+    return {
+      content: '',
+      configs: {
+        status: false, // 禁用底部状态栏
+        initialValue: 'hellow', // 设置初始值
         renderingConfig: {
           codeSyntaxHighlighting: true, // 开启代码高亮
           highlightingTheme: 'atom-one-light' // 自定义代码高亮主题，可选列表(https://github.com/isagalaev/highlight.js/tree/master/src/styles)
@@ -75,7 +96,7 @@ export default {
   },
   mounted: {
     console.log(this.simplemde)
-    this.simplemde.value('hellow')
+    this.simplemde.togglePreview()
 
     // 'change'事件已经绑定，可以通过@input指定处理器
     // 如果需要，你可以自行绑定这个列表中的其他事件: https://codemirror.net/doc/manual.html#events
@@ -92,6 +113,11 @@ export default {
     this.simplemde.isSideBySideActive() // returns boolean
     this.simplemde.isFullscreenActive() // returns boolean
     this.simplemde.clearAutosavedValue() // no returned value
+  },
+  methods: {
+    handleInput () {
+      // do some things
+    }
   }
 }
 ```
