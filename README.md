@@ -113,6 +113,7 @@ export default {
     this.simplemde.isSideBySideActive() // returns boolean
     this.simplemde.isFullscreenActive() // returns boolean
     this.simplemde.clearAutosavedValue() // no returned value
+    this.simplemde.markdown(this.content) // returns parsed html
   },
   methods: {
     handleInput () {
