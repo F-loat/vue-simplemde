@@ -53,9 +53,6 @@ export default {
 
       // 添加自定义 previewClass
       var _class = this.previewClass || ''
-      if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
-        _class += ' hljs'
-      }
       this.addPreviewClass(_class)
 
       // 绑定输入事件
@@ -87,10 +84,6 @@ export default {
 <style>
 .markdown-editor .markdown-body {
   padding: 0.5em
-}
-
-.markdown-editor .hljs {
-  display: none
 }
 
 .markdown-editor .editor-preview-active, .markdown-editor .editor-preview-active-side {
