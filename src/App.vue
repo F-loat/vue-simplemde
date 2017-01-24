@@ -13,7 +13,7 @@
       <markdown-editor v-model="content" :configs="configs2" preview-class="markdown-body"></markdown-editor>
     </div>
     <div class="editor theme">
-      <h4 class="title">代码块使用highlight的主题背景色</h4>
+      <h4 class="title">自定义代码高亮主题</h4>
       <markdown-editor v-model="content" :configs="configs3" preview-class="markdown-body"></markdown-editor>
     </div>
   </div>
@@ -96,8 +96,9 @@ body {
   min-height: 22vh;
 }
 
-/* 使用highlight主题的代码块背景 */
-.theme .hljs.editor-preview pre, .theme .hljs.editor-preview-side pre {
-  background: transparent
+/*修改代码块背景色及字体颜色*/
+.theme .editor-preview-side pre, .theme .editor-preview pre{
+  color: #abb2bf !important;
+  background: #282c34 !important;
 }
 </style>
