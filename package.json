@@ -1,10 +1,9 @@
 {
   "name": "vue-simplemde",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "Vue",
