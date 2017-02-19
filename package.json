@@ -21,7 +21,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "highlight.js": "^9.9.0",
     "simplemde": "^1.11.2"
   },
   "repository": {
