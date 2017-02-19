@@ -5,6 +5,8 @@
 </template>
 
 <script>
+'use strict';
+
 import SimpleMDE from 'simplemde';
 
 export default {
@@ -37,6 +39,11 @@ export default {
 
       // 实例化编辑器
       this.simplemde = new SimpleMDE(configs);
+
+      // 判断是否引入样式文件
+      if (!this.customTheme) {
+        require('simplemde/dist/simplemde.min.css');
+      }
 
       // 添加自定义 previewClass
       const className = this.previewClass || '';
