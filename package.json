@@ -2,7 +2,7 @@
   "name": "vue-simplemde",
   "version": "0.4.0",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
-  "main": "./dist/vue-simplemde.js",
+  "main": "./src/index.js",
   "scripts": {
     "build": "npm run build-dist-dev && npm run build-dist-prod",
     "build-dist-dev": "NODE_ENV=development webpack --config webpack.config --colors",
