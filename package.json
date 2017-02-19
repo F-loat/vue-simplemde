@@ -1,9 +1,14 @@
 {
   "name": "vue-simplemde",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
-  "main": "index.js",
+  "main": "./index.js",
   "scripts": {
+    "build": "npm run build-dist-dev && npm run build-dist-prod",
+    "build-dist-dev": "NODE_ENV=development webpack --config webpack.config --colors",
+    "build-dist-prod": "NODE_ENV=production webpack --config webpack.config --progress --colors -p",
+    "lint": "eslint ./src --fix",
+    "test": "echo \"Comming soon ;)\" && exit 0"
   },
   "keywords": [
     "Vue",
@@ -22,5 +27,20 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/F-loat/vue-simplemde.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "style-loader": "^0.13.1",
+    "vue-loader": "^11.1.0",
+    "vue-template-compiler": "^2.1.10",
+    "webpack": "^1.14.0",
+    "webpack-umd-external": "^1.0.2"
   }
 }
