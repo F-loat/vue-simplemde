@@ -610,7 +610,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	  destroyed: function destroyed() {
-	    this.simplemde.toTextArea();
+	    // this.simplemde.toTextArea();
 	    this.simplemde = null;
 	  },
 

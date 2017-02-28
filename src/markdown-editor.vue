@@ -63,7 +63,7 @@ export default {
     },
   },
   destroyed() {
-    this.simplemde.toTextArea();
+    // this.simplemde.toTextArea();
     this.simplemde = null;
   },
   watch: {
