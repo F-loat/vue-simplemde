@@ -1,5 +1,5 @@
 # Vue-SimpleMDE
-> Markdown Editor component for Vue.js
+> Markdown Editor component for Vue.js. Support both vue1.0 & vue2.0.
 
 [![NPM](https://nodei.co/npm/vue-simplemde.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-simplemde/)
 
@@ -42,6 +42,13 @@ export default {
 
 ## Examples
 
+### Vue1.0
+``` html
+<!-- 使用双向绑定修饰符 -->
+<markdown-editor :value.sync="content" v-ref:markdown-editor></markdown-editor>
+```
+
+### Vue2.0
 ``` html
 <!-- 通过 v-model 控制 value -->
 <markdown-editor v-model="content" ref="markdownEditor"></markdown-editor>
@@ -53,6 +60,7 @@ export default {
 <markdown-editor :configs="configs"></markdown-editor>
 ```
 
+### Both
 ``` javascript
 import { markdownEditor } from 'vue-simplemde'
 
@@ -105,10 +113,10 @@ export default {
     })
 
     // 移除SimpleMDE，组件销毁时会自动调用
-    this.simplemde.toTextArea()
     this.simplemde = null
 
     // 一些有用的方法
+    this.simplemde.toTextArea()
     this.simplemde.isPreviewActive() // returns boolean
     this.simplemde.isSideBySideActive() // returns boolean
     this.simplemde.isFullscreenActive() // returns boolean

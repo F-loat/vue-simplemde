@@ -27,6 +27,10 @@ export default {
       },
     },
   },
+  ready() {
+    this.initialize();
+    this.syncValue();
+  },
   mounted() {
     this.initialize();
   },
@@ -34,7 +38,7 @@ export default {
     initialize() {
       let configs = {};
       Object.assign(configs, this.configs);
-      configs.element = configs.element || this.$el.firstChild;
+      configs.element = configs.element || this.$el.firstElementChild;
       configs.initialValue = configs.initialValue || this.value;
 
       // 实例化编辑器
@@ -58,7 +62,10 @@ export default {
       const className = this.previewClass || '';
       this.addPreviewClass(className);
 
-      // 绑定输入事件
+      // 绑定事件
+      this.bindingEvents();
+    },
+    bindingEvents() {
       this.simplemde.codemirror.on('change', () => {
         this.$emit('input', this.simplemde.value());
       });
@@ -70,9 +77,13 @@ export default {
       preview.className = `editor-preview ${className}`;
       wrapper.appendChild(preview);
     },
+    syncValue() {
+      this.simplemde.codemirror.on('change', () => {
+        this.value = this.simplemde.value();
+      });
+    },
   },
   destroyed() {
-    this.simplemde.toTextArea();
     this.simplemde = null;
   },
   watch: {
