@@ -5,7 +5,7 @@
  * @author F-loat
  */
 
-const markdownEditor = require('./markdown-editor');
+const markdownEditor = require('./markdown-editor.vue');
 
 const VueSimplemde = {
   markdownEditor: markdownEditor,
