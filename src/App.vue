@@ -29,7 +29,8 @@ export default {
     return {
       content: '``` \nconsole.log("lalala") \n```',
       configs1: {
-        status: false
+        status: false,
+        toolbar: ['image']
       },
       configs2: {
         renderingConfig: {
