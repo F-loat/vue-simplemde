@@ -5,8 +5,6 @@
 </template>
 
 <script>
-'use strict';
-
 import SimpleMDE from 'simplemde';
 
 export default {
