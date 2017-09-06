@@ -12,6 +12,12 @@ export default {
   props: {
     value: String,
     previewClass: String,
+    autoinit: {
+      type: Boolean,
+      default() {
+        return true;
+      },
+    },
     customTheme: {
       type: Boolean,
       default() {
@@ -25,16 +31,18 @@ export default {
       },
     },
   },
-  ready() {
-    this.initialize();
-    this.syncValue();
-  },
   mounted() {
-    this.initialize();
+    if (this.autoinit) this.initialize();
+  },
+  activated() {
+    const editor = this.simplemde;
+    if (!editor) return;
+    const isActive = editor.isSideBySideActive() || editor.isPreviewActive();
+    if (isActive) editor.toggleFullScreen();
   },
   methods: {
     initialize() {
-      let configs = {};
+      const configs = {};
       Object.assign(configs, this.configs);
       configs.element = configs.element || this.$el.firstElementChild;
       configs.initialValue = configs.initialValue || this.value;
@@ -44,16 +52,9 @@ export default {
 
       // 判断是否开启代码高亮
       if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
-        require.ensure([], () => {
-          const theme = configs.renderingConfig.highlightingTheme || 'default';
-          window.hljs = require('highlight.js');
-          require(`highlight.js/styles/${theme}.css`);
-        }, 'highlight');
-      }
-
-      // 判断是否引入样式文件
-      if (!this.customTheme) {
-        require('simplemde/dist/simplemde.min.css');
+        import('highlight.js').then((hljs) => {
+          window.hljs = hljs;
+        });
       }
 
       // 添加自定义 previewClass
@@ -74,11 +75,6 @@ export default {
       wrapper.nextSibling.className += ` ${className}`;
       preview.className = `editor-preview ${className}`;
       wrapper.appendChild(preview);
-    },
-    syncValue() {
-      this.simplemde.codemirror.on('change', () => {
-        this.value = this.simplemde.value();
-      });
     },
   },
   destroyed() {

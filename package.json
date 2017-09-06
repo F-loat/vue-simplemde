@@ -1,9 +1,10 @@
 {
   "name": "vue-simplemde",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
   "main": "index.js",
   "scripts": {
+    "lint": "./node_modules/.bin/eslint --format node_modules/eslint-friendly-formatter ./src/markdown-editor.vue"
   },
   "keywords": [
     "Vue",
@@ -16,11 +17,19 @@
   },
   "license": "MIT",
   "dependencies": {
-    "highlight.js": "^9.9.0",
+    "highlight.js": "^9.12.0",
     "simplemde": "^1.11.2"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/F-loat/vue-simplemde.git"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-plugin-html": "^3.2.1",
+    "eslint-plugin-import": "^2.7.0"
   }
 }
