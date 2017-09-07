@@ -12,7 +12,7 @@
 - vue@^2.0
 - webpack@^2.0
 
-## Install vue-simplemde
+## Install
 
 ``` bash
 npm install vue-simplemde --save
@@ -43,7 +43,7 @@ export default {
 | 属性 | 类型 | 默认值 | 描述 |
 | ----| ----- | ----- | ---- |
 | value | String | 无 | 初始值，可使用v-model绑定 |
-| previewClass | String | 无 | 自定义预览样式类 |
+| preview-class | String | 无 | 自定义预览样式类 |
 | autoinit | Boolean | true | 是否自动初始化 |
 | highlight | Boolean | false | 是否开启高亮 |
 | configs | Object | {} | [SimpleMDE的配置项](#configuration) |
@@ -163,10 +163,23 @@ $ npm install --save github-markdown-css
 ```
 
 ## Highlight
+
+### install
+```
+$ npm install --save highlight.js
+```
+
+### use
 ``` vue
 <template>
   <markdown-editor :highlight="true"></markdown-editor>
 </template>
+
+<script>
+  import hljs from 'highlight.js';
+
+  window.hljs = hljs;
+</script>
 
 <style>
   @import '~simplemde/dist/simplemde.min.css';
@@ -200,7 +213,6 @@ $ npm install --save simplemde-theme-base
 ## Dependencies
 
 * [SimpleMDE](https://github.com/sparksuite/simplemde-markdown-editor)
-* [Highlight.js](https://github.com/isagalaev/highlight.js)
 
 ## Licence
 

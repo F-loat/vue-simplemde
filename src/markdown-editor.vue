@@ -52,9 +52,6 @@ export default {
       // 判断是否开启代码高亮
       if (this.highlight) {
         configs.renderingConfig.codeSyntaxHighlighting = true;
-        import('highlight.js').then((hljs) => {
-          window.hljs = hljs;
-        });
       }
 
       // 实例化编辑器
