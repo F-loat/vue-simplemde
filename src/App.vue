@@ -2,26 +2,38 @@
   <div class="demo-wrap">
     <div class="editor-wrap">
       <div class="editor">
-        <h4 class="title">默认配置</h4>
-        <markdown-editor v-model="content" ref="markdownEditor" :autoinit="false"></markdown-editor>
+        <h4 class="title">默认配置&禁用自动初始化</h4>
+        <markdown-editor
+          v-model="content"
+          ref="markdownEditor"
+          :autoinit="false"></markdown-editor>
       </div>
       <div class="editor">
         <h4 class="title">开启代码高亮&使用github的markdown样式</h4>
-        <markdown-editor v-model="content" :configs="configs1" preview-class="markdown-body"></markdown-editor>
+        <markdown-editor
+          v-model="content"
+          :highlight="true"
+          preview-class="markdown-body"></markdown-editor>
       </div>
       <div class="editor theme">
         <h4 class="title">自定义代码高亮主题</h4>
-        <markdown-editor v-model="content" :configs="configs2" preview-class="markdown-body"></markdown-editor>
+        <markdown-editor
+          v-model="content"
+          :highlight="true"
+          preview-class="markdown-body"></markdown-editor>
       </div>
       <div class="editor">
         <h4 class="title">隐藏底部统计栏&修改工具栏</h4>
-        <markdown-editor v-model="content" :configs="configs3"></markdown-editor>
+        <markdown-editor
+          v-model="content"
+          :configs="configs"></markdown-editor>
       </div>
     </div>
     <div class="button-wrap">
       <button type="button" @click="handleOutputMARKDOWN">输出MARKDOWN</button>
       <button type="button" @click="handleOutputHTML">输出HTML</button>
-      <div>{{output}}</div>
+      <div v-text="output"></div>
+      <div v-html="output" v-show="type === 'html'" class="markdown-body"></div>
     </div>
   </div>
 </template>
@@ -37,21 +49,12 @@ export default {
   data() {
     return {
       content: '``` \nconsole.log("lalala") \n```',
-      configs1: {
-        renderingConfig: {
-          codeSyntaxHighlighting: true,
-        },
-      },
-      configs2: {
-        renderingConfig: {
-          codeSyntaxHighlighting: true,
-        },
-      },
-      configs3: {
+      configs: {
         status: false,
         toolbar: ['image'],
       },
       output: '',
+      type: 'markdown',
     };
   },
   computed: {
@@ -69,9 +72,11 @@ export default {
       this.output = val;
     },
     handleOutputHTML() {
+      this.type = 'html';
       this.output = this.simplemde.markdown(this.content);
     },
     handleOutputMARKDOWN() {
+      this.type = 'markdown';
       this.output = this.content;
     },
   },

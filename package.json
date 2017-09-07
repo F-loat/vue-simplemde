@@ -14,7 +14,7 @@
     "babel-polyfill": "^6.26.0",
     "github-markdown-css": "^2.8.0",
     "vue": "^2.4.2",
-    "vue-simplemde": "^0.4.0"
+    "vue-simplemde": "^0.4.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
