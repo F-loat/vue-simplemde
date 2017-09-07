@@ -18,7 +18,7 @@ export default {
         return true;
       },
     },
-    customTheme: {
+    highlight: {
       type: Boolean,
       default() {
         return false;
@@ -42,20 +42,23 @@ export default {
   },
   methods: {
     initialize() {
-      const configs = {};
+      const configs = {
+        element: this.$el.firstElementChild,
+        initialValue: this.value,
+        renderingConfig: {},
+      };
       Object.assign(configs, this.configs);
-      configs.element = configs.element || this.$el.firstElementChild;
-      configs.initialValue = configs.initialValue || this.value;
-
-      // 实例化编辑器
-      this.simplemde = new SimpleMDE(configs);
 
       // 判断是否开启代码高亮
-      if (configs.renderingConfig && configs.renderingConfig.codeSyntaxHighlighting) {
+      if (this.highlight) {
+        configs.renderingConfig.codeSyntaxHighlighting = true;
         import('highlight.js').then((hljs) => {
           window.hljs = hljs;
         });
       }
+
+      // 实例化编辑器
+      this.simplemde = new SimpleMDE(configs);
 
       // 添加自定义 previewClass
       const className = this.previewClass || '';

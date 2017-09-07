@@ -1,5 +1,5 @@
 # Vue-SimpleMDE
-> Markdown Editor component for Vue.js. Support both vue1.0 & vue2.0.
+> Markdown Editor component for Vue.js. Support only vue2.x.
 
 [![NPM](https://nodei.co/npm/vue-simplemde.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-simplemde/)
 
@@ -38,6 +38,15 @@ export default {
   }
 }
 ```
+
+## Props
+| 属性 | 类型 | 默认值 | 描述 |
+| ----| ----- | ----- | ---- |
+| value | String | 无 | 初始值，可使用v-model绑定 |
+| previewClass | String | 无 | 自定义预览样式类 |
+| autoinit | Boolean | true | 是否自动初始化 |
+| highlight | Boolean | false | 是否开启高亮 |
+| configs | Object | {} | [SimpleMDE的配置项](#configuration) |
 
 ## Examples
 
@@ -90,10 +99,7 @@ export default {
         content: '',
         configs: {
           status: false, // 禁用底部状态栏
-          initialValue: 'hellow', // 设置初始值
-          renderingConfig: {
-            codeSyntaxHighlighting: true // 开启代码高亮
-          }
+          spellChecker: false // 禁用拼写检查
         }
       }
     },
@@ -131,7 +137,7 @@ export default {
       }
     }
   }
-<script>
+</script>
 ```
 
 ## Markdown style
@@ -157,8 +163,11 @@ $ npm install --save github-markdown-css
 ```
 
 ## Highlight
-> 代码高亮除需开启配置外，还要自行引入css文件
 ``` vue
+<template>
+  <markdown-editor :highlight="true"></markdown-editor>
+</template>
+
 <style>
   @import '~simplemde/dist/simplemde.min.css';
   @import '~highlight.js/styles/atom-one-dark.css';
@@ -176,10 +185,6 @@ $ npm install --save simplemde-theme-base
 
 ### use
 ``` vue
-<template>
-  <markdown-editor :custom-theme="true"></markdown-editor>
-</template>
-
 <style>
   @import '~simplemde-theme-base/dist/simplemde-theme-base.min.css';
   /* 无需引入simplemde.min.css */
@@ -187,13 +192,14 @@ $ npm install --save simplemde-theme-base
 ```
 
 ## Configuration
+> SimpleMDE的配置
 
 * [中文](doc/configuration_zh.md)
 * [English](doc/configuration_en.md)
 
 ## Dependencies
 
-* [SimpleMDE](https://github.com/NextStepWebs/simplemde-markdown-editor)
+* [SimpleMDE](https://github.com/sparksuite/simplemde-markdown-editor)
 * [Highlight.js](https://github.com/isagalaev/highlight.js)
 
 ## Licence
