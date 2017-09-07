@@ -4791,11 +4791,10 @@ vue-loader@^13.0.4:
     vue-style-loader "^3.0.0"
     vue-template-es2015-compiler "^1.5.3"
 
-vue-simplemde@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/vue-simplemde/-/vue-simplemde-0.4.2.tgz#cfb427522fb1ed3fd95aadcbf9cb8cb44a5f6f0d"
+vue-simplemde@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/vue-simplemde/-/vue-simplemde-0.4.4.tgz#88ab9ceeb9bf1c2ffd8e02978b9d06468aa149d7"
   dependencies:
-    highlight.js "^9.12.0"
     simplemde "^1.11.2"
 
 vue-style-loader@^3.0.0, vue-style-loader@^3.0.1:

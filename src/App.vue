@@ -40,7 +40,9 @@
 
 <script>
 import markdownEditor from 'vue-simplemde/src/markdown-editor';
+import hljs from 'highlight.js';
 
+window.hljs = hljs;
 export default {
   name: 'index',
   components: {
