@@ -6,6 +6,7 @@
 
 <script>
 import SimpleMDE from 'simplemde';
+import marked from 'marked';
 
 export default {
   name: 'markdown-editor',
@@ -19,6 +20,12 @@ export default {
       },
     },
     highlight: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
+    sanitize: {
       type: Boolean,
       default() {
         return false;
@@ -53,6 +60,9 @@ export default {
       if (this.highlight) {
         configs.renderingConfig.codeSyntaxHighlighting = true;
       }
+
+      // 设置是否渲染输入的html
+      marked.setOptions({ sanitize: this.sanitize });
 
       // 实例化编辑器
       this.simplemde = new SimpleMDE(configs);

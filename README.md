@@ -46,6 +46,7 @@ export default {
 | preview-class | String | 无 | 自定义预览样式类 |
 | autoinit | Boolean | true | 是否自动初始化 |
 | highlight | Boolean | false | 是否开启高亮 |
+| sanitize | Boolean | false | 开启后不渲染输入的html |
 | configs | Object | {} | [SimpleMDE的配置项](#configuration) |
 
 ## Examples

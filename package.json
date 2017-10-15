@@ -1,6 +1,6 @@
 {
   "name": "vue-simplemde",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
   "main": "dist/vue-simplemde.min.js",
   "scripts": {
@@ -20,6 +20,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "marked": "^0.3.6",
     "simplemde": "^1.11.2"
   },
   "repository": {
@@ -28,20 +29,19 @@
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^6.0.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.5.1",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-friendly-formatter": "^3.0.0",
     "eslint-plugin-html": "^3.2.1",
     "eslint-plugin-import": "^2.7.0",
-    "file-loader": "^0.9.0",
-    "vue-loader": "^12.1.0",
+    "file-loader": "^1.1.5",
+    "vue-loader": "^13.3.0",
     "vue-template-compiler": "^2.3.3",
-    "webpack": "^2.6.1",
-    "webpack-umd-external": "^1.0.2"
+    "webpack": "^3.7.1"
   }
 }

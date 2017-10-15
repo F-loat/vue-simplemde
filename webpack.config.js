@@ -2,7 +2,6 @@
 
 const path = require('path')
 const webpack = require('webpack')
-const webpackUMDExternal = require('webpack-umd-external')
 
 const env = process.env.NODE_ENV;
 
@@ -15,10 +14,10 @@ module.exports = {
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
-  externals: webpackUMDExternal({
-    'vue': 'Vue',
-    'simplemde': 'SimpleMDE'
-  }),
+  externals: {
+    'simplemde': 'SimpleMDE',
+    'marked': 'Marked'
+  },
   module: {
     rules: [
       {
