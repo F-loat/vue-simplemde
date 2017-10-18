@@ -15,8 +15,8 @@ module.exports = {
     umdNamedDefine: true
   },
   externals: {
-    'simplemde': 'SimpleMDE',
-    'marked': 'Marked'
+    'Simplemde': 'SimpleMDE',
+    'Marked': 'Marked'
   },
   module: {
     rules: [

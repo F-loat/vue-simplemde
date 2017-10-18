@@ -1,12 +1,12 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("simplemde"), require("marked"));
+		module.exports = factory(require("SimpleMDE"), require("Marked"));
 	else if(typeof define === 'function' && define.amd)
-		define("VueSimpleMDE", ["simplemde", "marked"], factory);
+		define("VueSimpleMDE", ["SimpleMDE", "Marked"], factory);
 	else if(typeof exports === 'object')
-		exports["VueSimpleMDE"] = factory(require("simplemde"), require("marked"));
+		exports["VueSimpleMDE"] = factory(require("SimpleMDE"), require("Marked"));
 	else
-		root["VueSimpleMDE"] = factory(root["simplemde"], root["marked"]);
+		root["VueSimpleMDE"] = factory(root["SimpleMDE"], root["Marked"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
