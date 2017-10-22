@@ -6,7 +6,7 @@
 	else if(typeof exports === 'object')
 		exports["VueSimpleMDE"] = factory(require("simplemde"), require("marked"));
 	else
-		root["VueSimpleMDE"] = factory(root["simplemde"], root["marked"]);
+		root["VueSimpleMDE"] = factory(root["SimpleMDE"], root["marked"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
@@ -130,7 +130,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src/markdown-editor.vue"
+Component.options.__file = "src\\markdown-editor.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */

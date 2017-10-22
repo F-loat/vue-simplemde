@@ -15,7 +15,12 @@ module.exports = {
     umdNamedDefine: true
   },
   externals: {
-    'simplemde': 'simplemde',
+    simplemde: {
+      commonjs: 'simplemde',
+      commonjs2: 'simplemde',
+      amd: 'simplemde',
+      root: 'SimpleMDE'
+    },
     'marked': 'marked'
   },
   module: {
