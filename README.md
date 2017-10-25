@@ -1,7 +1,8 @@
 # Vue-SimpleMDE
 > Markdown Editor component for Vue.js. Support only vue2.x.
 
-[![NPM](https://nodei.co/npm/vue-simplemde.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/vue-simplemde/)
+[![npm package](https://img.shields.io/npm/v/vue-simplemde.svg)](https://npmjs.org/package/vue-simplemde)
+[![npm downloads](http://img.shields.io/npm/dm/vue-simplemde.svg)](https://npmjs.org/package/vue-simplemde)
 
 # Demo
 [Demo Page](https://F-loat.github.io/vue-simplemde/)
