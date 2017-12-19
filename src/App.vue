@@ -32,7 +32,7 @@
     <div class="button-wrap">
       <button type="button" @click="handleOutputMARKDOWN">输出MARKDOWN</button>
       <button type="button" @click="handleOutputHTML">输出HTML</button>
-      <div v-text="output"></div>
+      <pre v-text="output"></pre>
       <div v-html="output" v-show="type === 'html'" class="markdown-body"></div>
     </div>
   </div>
