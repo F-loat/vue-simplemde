@@ -22,7 +22,7 @@ npm install vue-simplemde --save
 ## Use
 
 ``` javascript
-// 全局引用
+// Global install
 import Vue from 'vue'
 import VueSimplemde from 'vue-simplemde'
 
@@ -30,7 +30,7 @@ Vue.use(VueSimplemde)
 ```
 
 ``` javascript
-// 单个组件内引用
+// In component install
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 
 export default {
