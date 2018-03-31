@@ -49,12 +49,16 @@ export default {
   },
   methods: {
     initialize() {
-      const configs = {
+      const configs = Object.assign({
         element: this.$el.firstElementChild,
         initialValue: this.value,
         renderingConfig: {},
-      };
-      Object.assign(configs, this.configs);
+      }, this.configs);
+
+      // 同步 value 和 initialValue 的值
+      if (configs.initialValue) {
+        this.$emit('input', configs.initialValue);
+      }
 
       // 判断是否开启代码高亮
       if (this.highlight) {
