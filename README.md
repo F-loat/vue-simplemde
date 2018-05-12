@@ -4,8 +4,14 @@
 [![npm package](https://img.shields.io/npm/v/vue-simplemde.svg)](https://npmjs.org/package/vue-simplemde)
 [![npm downloads](http://img.shields.io/npm/dm/vue-simplemde.svg)](https://npmjs.org/package/vue-simplemde)
 
-# Demo
-[Demo Page](https://F-loat.github.io/vue-simplemde/)
+## Examples
+
+> No longer support Vue1.x, you can modify to use
+
+* [Demo Page](https://f-loat.github.io/vue-simplemde/)
+* [Demo Source](https://github.com/F-loat/vue-simplemde/tree/gh-pages)
+* [Simple Example](./examples/index.vue)
+* [Nuxt Example](./examples/nuxt)
 
 # Use Setup
 
@@ -22,7 +28,7 @@ npm install vue-simplemde --save
 ## Use
 
 ``` javascript
-// 全局引用
+// Global reference
 import Vue from 'vue'
 import VueSimplemde from 'vue-simplemde'
 
@@ -30,7 +36,7 @@ Vue.use(VueSimplemde)
 ```
 
 ``` javascript
-// 单个组件内引用
+// Internal reference in a single component
 import markdownEditor from 'vue-simplemde/src/markdown-editor'
 
 export default {
@@ -41,26 +47,17 @@ export default {
 ```
 
 ## Props
-| 属性 | 类型 | 默认值 | 描述 |
+| property | type | default | describe |
 | ----| ----- | ----- | ---- |
-| value | String | 无 | 初始值，可使用v-model绑定 |
-| preview-class | String | 无 | 自定义预览样式类 |
-| autoinit | Boolean | true | 是否自动初始化 |
-| highlight | Boolean | false | 是否开启高亮 |
-| sanitize | Boolean | false | 开启后不渲染输入的html |
-| configs | Object | {} | [SimpleMDE的配置项](#configuration) |
-
-## Examples
-
-> 不再支持Vue1.x，可自行修改使用
-
-* [Demo Page](https://f-loat.github.io/vue-simplemde/)
-* [Demo Source](https://github.com/F-loat/vue-simplemde/tree/gh-pages)
-* [Simple Example](./examples/index.vue)
-* [Nuxt Example](./examples/nuxt)
+| value | String | None | Initial value, v-model binding can be used |
+| preview-class | String | None | Custom preview style class |
+| autoinit | Boolean | true | Automatic initialization |
+| highlight | Boolean | false | Is it open to highlight |
+| sanitize | Boolean | false | HTML that does not render input after opening |
+| configs | Object | {} | [SimpleMDE's config](#configuration) |
 
 ## Markdown style
-> e.g. 使用Github的markdown样式
+> e.g. use Github's markdown style
 
 [github-markdown-css](https://github.com/sindresorhus/github-markdown-css)
 
@@ -103,12 +100,12 @@ $ npm install --save highlight.js
 <style>
   @import '~simplemde/dist/simplemde.min.css';
   @import '~highlight.js/styles/atom-one-dark.css';
-  /* 高亮主题可选列表：https://github.com/isagalaev/highlight.js/tree/master/src/styles */
+  /* Highlight theme list: https://github.com/isagalaev/highlight.js/tree/master/src/styles */
 </style>
 ```
 
 ## Editor Theme ([simplemde-theme-base](https://github.com/xcatliu/simplemde-theme-base/wiki/List-of-themes))
-> e.g. 使用simplemde-theme-base主题
+> e.g. use simplemde-theme-base theme
 
 ### install
 ```
@@ -119,12 +116,12 @@ $ npm install --save simplemde-theme-base
 ``` vue
 <style>
   @import '~simplemde-theme-base/dist/simplemde-theme-base.min.css';
-  /* 无需引入simplemde.min.css */
+  /* no need import imposimplemde.min.css */
 </style>
 ```
 
 ## Configuration
-> SimpleMDE的配置
+> SimpleMD's config
 
 * [中文](doc/configuration_zh.md)
 * [English](doc/configuration_en.md)
@@ -137,4 +134,4 @@ $ npm install --save simplemde-theme-base
 
 vue-simplemde is open source and released under the MIT Licence.
 
-Copyright (c) 2017 F-loat
+Copyright (c) 2018 F-loat
