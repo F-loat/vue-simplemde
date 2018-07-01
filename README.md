@@ -4,20 +4,9 @@
 [![npm package](https://img.shields.io/npm/v/vue-simplemde.svg)](https://npmjs.org/package/vue-simplemde)
 [![npm downloads](http://img.shields.io/npm/dm/vue-simplemde.svg)](https://npmjs.org/package/vue-simplemde)
 
-## Examples
-
-> No longer support Vue1.x, you can modify to use
-
-* [Demo Page](https://f-loat.github.io/vue-simplemde/)
-* [Demo Source](https://github.com/F-loat/vue-simplemde/tree/gh-pages)
-* [Simple Example](./examples/index.vue)
-* [Nuxt Example](./examples/nuxt)
-
 # Use Setup
 
-## Requirements
-- vue@^2.0
-- webpack@^2.0
+> No longer support Vue1.x, you can modify to use
 
 ## Install
 
@@ -27,23 +16,36 @@ npm install vue-simplemde --save
 
 ## Use
 
-``` javascript
-// Global reference
-import Vue from 'vue'
-import VueSimplemde from 'vue-simplemde'
+* Internal reference in a single component
 
-Vue.use(VueSimplemde)
+``` vue
+<template>
+  <markdown-editor v-model="content" ref="markdownEditor"></markdown-editor>
+</template>
+
+<script>
+  import markdownEditor from 'vue-simplemde/src/markdown-editor'
+
+  export default {
+    components: {
+      markdownEditor
+    }
+  }
+</script>
+
+<style>
+  @import '~simplemde/dist/simplemde.min.css';
+</style>
 ```
 
-``` javascript
-// Internal reference in a single component
-import markdownEditor from 'vue-simplemde/src/markdown-editor'
+* Global reference
 
-export default {
-  components: {
-    markdownEditor
-  }
-}
+``` javascript
+import Vue from 'vue'
+import VueSimplemde from 'vue-simplemde'
+import 'simplemde/dist/simplemde.min.css'
+
+Vue.use(VueSimplemde)
 ```
 
 ## Props
@@ -116,7 +118,7 @@ $ npm install --save simplemde-theme-base
 ``` vue
 <style>
   @import '~simplemde-theme-base/dist/simplemde-theme-base.min.css';
-  /* no need import imposimplemde.min.css */
+  /* no need import simplemde.min.css */
 </style>
 ```
 
@@ -125,6 +127,13 @@ $ npm install --save simplemde-theme-base
 
 * [中文](doc/configuration_zh.md)
 * [English](doc/configuration_en.md)
+
+## Examples
+
+* [Simple Example](./examples/index.vue)
+* [Nuxt Example](./examples/nuxt)
+* [Demo Page](https://f-loat.github.io/vue-simplemde/)
+* [Demo Source](https://github.com/F-loat/vue-simplemde/tree/gh-pages)
 
 ## Dependencies
 
