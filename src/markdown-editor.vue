@@ -1,6 +1,6 @@
 <template>
   <div class="markdown-editor">
-    <textarea></textarea>
+    <textarea :name="name"></textarea>
   </div>
 </template>
 
@@ -12,6 +12,7 @@ export default {
   name: 'markdown-editor',
   props: {
     value: String,
+    name: String,
     previewClass: String,
     autoinit: {
       type: Boolean,
