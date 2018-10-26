@@ -130,7 +130,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "src\\markdown-editor.vue"
+Component.options.__file = "src/markdown-editor.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
@@ -660,6 +660,7 @@ module.exports = function normalizeComponent (
   name: 'markdown-editor',
   props: {
     value: String,
+    name: String,
     previewClass: String,
     autoinit: {
       type: Boolean,
@@ -775,16 +776,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "markdown-editor" }, [
+    _c("textarea", { attrs: { name: _vm.name } })
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "markdown-editor" }, [_c("textarea")])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
