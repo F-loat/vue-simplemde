@@ -52,6 +52,7 @@ Vue.use(VueSimplemde)
 | property | type | default | describe |
 | ----| ----- | ----- | ---- |
 | value | String | None | Initial value, v-model binding can be used |
+| name | String | None | The name of the control. |
 | preview-class | String | None | Custom preview style class |
 | autoinit | Boolean | true | Automatic initialization |
 | highlight | Boolean | false | Is it open to highlight |
