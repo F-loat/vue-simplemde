@@ -1,6 +1,6 @@
 {
   "name": "vue-simplemde",
-  "version": "0.4.9",
+  "version": "0.5.0",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
   "main": "dist/vue-simplemde.min.js",
   "scripts": {
