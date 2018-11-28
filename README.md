@@ -14,6 +14,11 @@
 npm install vue-simplemde --save
 ```
 
+### Install peerDependencies
+```bash
+npm install marked simplemde --save
+```
+
 ## Use
 
 * Internal reference in a single component
@@ -139,6 +144,7 @@ $ npm install --save simplemde-theme-base
 ## Dependencies
 
 * [SimpleMDE](https://github.com/sparksuite/simplemde-markdown-editor)
+* [marked](https://github.com/markedjs/marked)
 
 ## Licence
 
