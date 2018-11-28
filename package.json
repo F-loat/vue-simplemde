@@ -27,7 +27,7 @@
     "url": "https://github.com/F-loat/vue-simplemde.git"
   },
   "license": "MIT",
-  "peerDependencies": {
+  "dependencies": {
     "marked": "^0.3.6",
     "simplemde": "^1.11.2"
   },
