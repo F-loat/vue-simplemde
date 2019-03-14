@@ -7,7 +7,7 @@
 		exports["VueSimpleMDE"] = factory(require("simplemde"), require("marked"));
 	else
 		root["VueSimpleMDE"] = factory(root["SimpleMDE"], root["marked"]);
-})(this, function(__WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__) {
+})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE_9__, __WEBPACK_EXTERNAL_MODULE_10__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -78,8 +78,105 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_simplemde__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_simplemde___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_simplemde__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_marked__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_marked__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__props__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__events__ = __webpack_require__(12);
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+  name: 'markdown-editor',
+  props: __WEBPACK_IMPORTED_MODULE_2__props__["a" /* default */],
+  mounted: function mounted() {
+    if (this.autoinit) {
+      this.initialize();
+    }
+  },
+  activated: function activated() {
+    var editor = this.simplemde;
+    if (!editor) return;
+    var isActive = editor.isSideBySideActive() || editor.isPreviewActive();
+    if (isActive) editor.toggleFullScreen();
+  },
+
+  methods: {
+    initialize: function initialize() {
+      var configs = Object.assign({
+        element: this.$el.firstElementChild,
+        initialValue: this.value,
+        renderingConfig: {}
+      }, this.configs);
+      // 同步 value 和 initialValue 的值
+      if (configs.initialValue) {
+        this.$emit('input', configs.initialValue);
+      }
+      // 判断是否开启代码高亮
+      if (this.highlight) {
+        configs.renderingConfig.codeSyntaxHighlighting = true;
+      }
+      // 设置是否渲染输入的html
+      __WEBPACK_IMPORTED_MODULE_1_marked___default.a.setOptions({
+        sanitize: this.sanitize
+      });
+      // 实例化编辑器
+      this.simplemde = new __WEBPACK_IMPORTED_MODULE_0_simplemde___default.a(configs);
+      // 添加自定义 previewClass
+      var className = this.previewClass || '';
+      this.addPreviewClass(className);
+      // 绑定事件
+      this.bindingEvents();
+    },
+    bindingEvents: function bindingEvents() {
+      var _this = this;
+
+      this.simplemde.codemirror.on('change', function () {
+        _this.$emit('input', _this.simplemde.value());
+      });
+      __WEBPACK_IMPORTED_MODULE_3__events__["a" /* default */].forEach(function (event) {
+        console.log(event);
+        _this.simplemde.codemirror.on(event, function (e) {
+          _this.$emit(event, e);
+        });
+      });
+    },
+    addPreviewClass: function addPreviewClass(className) {
+      var wrapper = this.simplemde.codemirror.getWrapperElement();
+      var preview = document.createElement('div');
+      wrapper.nextSibling.className += ' ' + className;
+      preview.className = 'editor-preview ' + className;
+      wrapper.appendChild(preview);
+    }
+  },
+  destroyed: function destroyed() {
+    this.simplemde = null;
+  },
+
+  watch: {
+    value: function value(val) {
+      if (val === this.simplemde.value()) return;
+      this.simplemde.value(val);
+    }
+  }
+});
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_markdown_editor_vue__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__src_markdown_editor_vue__ = __webpack_require__(2);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "markdownEditor", function() { return __WEBPACK_IMPORTED_MODULE_0__src_markdown_editor_vue__["a"]; });
 /**
  * vue-simplemde
@@ -98,24 +195,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 1 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_markdown_editor_vue__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_10c4a568_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_markdown_editor_vue__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_markdown_editor_vue__ = __webpack_require__(0);
+/* unused harmony namespace reexport */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_734847c2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_markdown_editor_vue__ = __webpack_require__(13);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(2)
+  __webpack_require__(3)
 }
-var normalizeComponent = __webpack_require__(7)
+var normalizeComponent = __webpack_require__(8)
 /* script */
+
 
 /* template */
 
 /* template functional */
-  var __vue_template_functional__ = false
+var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
@@ -123,15 +222,14 @@ var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_bustCache_markdown_editor_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_10c4a568_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_bustCache_markdown_editor_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_markdown_editor_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_734847c2_hasScoped_false_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_markdown_editor_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
 Component.options.__file = "src/markdown-editor.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
 
 /* hot reload */
 if (false) {(function () {
@@ -140,10 +238,10 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-10c4a568", Component.options)
+    hotAPI.createRecord("data-v-734847c2", Component.options)
   } else {
-    hotAPI.reload("data-v-10c4a568", Component.options)
-' + '  }
+    hotAPI.reload("data-v-734847c2", Component.options)
+  }
   module.hot.dispose(function (data) {
     disposed = true
   })
@@ -153,23 +251,23 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 2 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(3);
+var content = __webpack_require__(4);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(5)("7b15d606", content, false);
+var update = __webpack_require__(6)("1ea114ba", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10c4a568\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./markdown-editor.vue", function() {
-     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-10c4a568\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./markdown-editor.vue");
+   module.hot.accept("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-734847c2\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./markdown-editor.vue", function() {
+     var newContent = require("!!../node_modules/css-loader/index.js!../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-734847c2\",\"scoped\":false,\"hasInlineConfig\":false}!../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./markdown-editor.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -179,21 +277,21 @@ if(false) {
 }
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(4)(undefined);
+exports = module.exports = __webpack_require__(5)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n.markdown-editor .markdown-body {\n  padding: 0.5em\n}\n.markdown-editor .editor-preview-active, .markdown-editor .editor-preview-active-side {\n  display: block;\n}\n", ""]);
+exports.push([module.i, "\n.markdown-editor .markdown-body {\n  padding: 0.5em;\n}\n.markdown-editor .editor-preview-active,\n.markdown-editor .editor-preview-active-side {\n  display: block;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /*
@@ -275,7 +373,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -294,7 +392,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(6)
+var listToStyles = __webpack_require__(7)
 
 /*
 type StyleObject = {
@@ -322,13 +420,17 @@ var singletonElement = null
 var singletonCounter = 0
 var isProduction = false
 var noop = function () {}
+var options = null
+var ssrIdKey = 'data-vue-ssr-id'
 
 // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
 // tags it will allow on a page
 var isOldIE = typeof navigator !== 'undefined' && /msie [6-9]\b/.test(navigator.userAgent.toLowerCase())
 
-module.exports = function (parentId, list, _isProduction) {
+module.exports = function (parentId, list, _isProduction, _options) {
   isProduction = _isProduction
+
+  options = _options || {}
 
   var styles = listToStyles(parentId, list)
   addStylesToDom(styles)
@@ -393,7 +495,7 @@ function createStyleElement () {
 
 function addStyle (obj /* StyleObjectPart */) {
   var update, remove
-  var styleElement = document.querySelector('style[data-vue-ssr-id~="' + obj.id + '"]')
+  var styleElement = document.querySelector('style[' + ssrIdKey + '~="' + obj.id + '"]')
 
   if (styleElement) {
     if (isProduction) {
@@ -475,6 +577,9 @@ function applyToTag (styleElement, obj) {
   if (media) {
     styleElement.setAttribute('media', media)
   }
+  if (options.ssrId) {
+    styleElement.setAttribute(ssrIdKey, obj.id)
+  }
 
   if (sourceMap) {
     // https://developer.chrome.com/devtools/docs/javascript-debugging
@@ -496,7 +601,7 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
 /**
@@ -529,7 +634,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -638,26 +743,23 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_simplemde__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_simplemde___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_simplemde__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_marked__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_marked___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_marked__);
-//
-//
-//
-//
-//
-//
-
-
-
-
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'markdown-editor',
   props: {
     value: String,
     name: String,
@@ -686,89 +788,18 @@ module.exports = function normalizeComponent (
         return {};
       }
     }
-  },
-  mounted: function mounted() {
-    if (this.autoinit) this.initialize();
-  },
-  activated: function activated() {
-    var editor = this.simplemde;
-    if (!editor) return;
-    var isActive = editor.isSideBySideActive() || editor.isPreviewActive();
-    if (isActive) editor.toggleFullScreen();
-  },
-
-  methods: {
-    initialize: function initialize() {
-      var configs = Object.assign({
-        element: this.$el.firstElementChild,
-        initialValue: this.value,
-        renderingConfig: {}
-      }, this.configs);
-
-      // 同步 value 和 initialValue 的值
-      if (configs.initialValue) {
-        this.$emit('input', configs.initialValue);
-      }
-
-      // 判断是否开启代码高亮
-      if (this.highlight) {
-        configs.renderingConfig.codeSyntaxHighlighting = true;
-      }
-
-      // 设置是否渲染输入的html
-      __WEBPACK_IMPORTED_MODULE_1_marked___default.a.setOptions({ sanitize: this.sanitize });
-
-      // 实例化编辑器
-      this.simplemde = new __WEBPACK_IMPORTED_MODULE_0_simplemde___default.a(configs);
-
-      // 添加自定义 previewClass
-      var className = this.previewClass || '';
-      this.addPreviewClass(className);
-
-      // 绑定事件
-      this.bindingEvents();
-    },
-    bindingEvents: function bindingEvents() {
-      var _this = this;
-
-      this.simplemde.codemirror.on('change', function () {
-        _this.$emit('input', _this.simplemde.value());
-      });
-    },
-    addPreviewClass: function addPreviewClass(className) {
-      var wrapper = this.simplemde.codemirror.getWrapperElement();
-      var preview = document.createElement('div');
-      wrapper.nextSibling.className += ' ' + className;
-      preview.className = 'editor-preview ' + className;
-      wrapper.appendChild(preview);
-    }
-  },
-  destroyed: function destroyed() {
-    this.simplemde = null;
-  },
-
-  watch: {
-    value: function value(val) {
-      if (val === this.simplemde.value()) return;
-      this.simplemde.value(val);
-    }
   }
 });
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_9__;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (["blur", "focus", "submit", "select", "click"]);
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -787,7 +818,7 @@ var esExports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-10c4a568", esExports)
+    require("vue-hot-reload-api")      .rerender("data-v-734847c2", esExports)
   }
 }
 

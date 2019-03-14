@@ -1,52 +1,33 @@
 <template>
-  <div class="markdown-editor">
-    <textarea :name="name"></textarea>
-  </div>
+<div class="markdown-editor">
+  <textarea :name="name"></textarea>
+</div>
 </template>
 
 <script>
 import SimpleMDE from 'simplemde';
 import marked from 'marked';
+import props from './props';
+
+import events from './events';
 
 export default {
   name: 'markdown-editor',
-  props: {
-    value: String,
-    name: String,
-    previewClass: String,
-    autoinit: {
-      type: Boolean,
-      default() {
-        return true;
-      },
-    },
-    highlight: {
-      type: Boolean,
-      default() {
-        return false;
-      },
-    },
-    sanitize: {
-      type: Boolean,
-      default() {
-        return false;
-      },
-    },
-    configs: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-  },
+  mixins: [props],
   mounted() {
-    if (this.autoinit) this.initialize();
+    if (this.autoinit) {
+      this.initialize();
+    }
   },
   activated() {
     const editor = this.simplemde;
-    if (!editor) return;
+    if (!editor) {
+      return;
+    }
     const isActive = editor.isSideBySideActive() || editor.isPreviewActive();
-    if (isActive) editor.toggleFullScreen();
+    if (isActive) {
+      editor.toggleFullScreen();
+    }
   },
   methods: {
     initialize() {
@@ -55,33 +36,34 @@ export default {
         initialValue: this.value,
         renderingConfig: {},
       }, this.configs);
-
       // 同步 value 和 initialValue 的值
       if (configs.initialValue) {
         this.$emit('input', configs.initialValue);
       }
-
       // 判断是否开启代码高亮
       if (this.highlight) {
         configs.renderingConfig.codeSyntaxHighlighting = true;
       }
-
       // 设置是否渲染输入的html
-      marked.setOptions({ sanitize: this.sanitize });
-
+      marked.setOptions({
+        sanitize: this.sanitize,
+      });
       // 实例化编辑器
       this.simplemde = new SimpleMDE(configs);
-
       // 添加自定义 previewClass
       const className = this.previewClass || '';
       this.addPreviewClass(className);
-
       // 绑定事件
       this.bindingEvents();
     },
     bindingEvents() {
       this.simplemde.codemirror.on('change', () => {
         this.$emit('input', this.simplemde.value());
+      });
+      events.forEach((event) => {
+        this.simplemde.codemirror.on(event, (e) => {
+          this.$emit(event, e);
+        });
       });
     },
     addPreviewClass(className) {
@@ -106,10 +88,11 @@ export default {
 
 <style>
 .markdown-editor .markdown-body {
-  padding: 0.5em
+  padding: 0.5em;
 }
 
-.markdown-editor .editor-preview-active, .markdown-editor .editor-preview-active-side {
+.markdown-editor .editor-preview-active,
+.markdown-editor .editor-preview-active-side {
   display: block;
 }
 </style>
