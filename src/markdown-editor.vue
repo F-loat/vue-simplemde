@@ -67,7 +67,7 @@ export default {
       const editor = simplemde;
       const extraKeys = Object.keys(this.extraKeys);
       if (extraKeys.length) {
-        extraKeys.forEach(function _key(key) {
+        extraKeys.forEach((key) => {
           editor.codemirror.options.extraKeys[key] = this.extraKeys[key];
         });
       }

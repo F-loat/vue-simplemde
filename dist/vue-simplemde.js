@@ -148,23 +148,25 @@ return /******/ (function(modules) { // webpackBootstrap
       return simplemde;
     },
     lookForExtraKeys: function lookForExtraKeys(simplemde) {
+      var _this = this;
+
       var editor = simplemde;
       var extraKeys = Object.keys(this.extraKeys);
       if (extraKeys.length) {
-        extraKeys.forEach(function _key(key) {
-          editor.codemirror.options.extraKeys[key] = this.extraKeys[key];
+        extraKeys.forEach(function (key) {
+          editor.codemirror.options.extraKeys[key] = _this.extraKeys[key];
         });
       }
     },
     bindingEvents: function bindingEvents() {
-      var _this = this;
+      var _this2 = this;
 
       this.simplemde.codemirror.on('change', function () {
-        _this.$emit('input', _this.simplemde.value());
+        _this2.$emit('input', _this2.simplemde.value());
       });
       __WEBPACK_IMPORTED_MODULE_3__events__["a" /* default */].forEach(function (event) {
-        _this.simplemde.codemirror.on(event, function (e) {
-          _this.$emit(event, e);
+        _this2.simplemde.codemirror.on(event, function (e) {
+          _this2.$emit(event, e);
         });
       });
     },
