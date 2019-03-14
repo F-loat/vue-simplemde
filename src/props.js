@@ -26,6 +26,13 @@ export default {
       default () {
         return {};
       },
+    },
+    extraKeys: {
+      type: Object,
+      required: false,
+      default () {
+        return {};
+      }
     }
   }
 }

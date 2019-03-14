@@ -95,9 +95,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 
+
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'markdown-editor',
-  props: __WEBPACK_IMPORTED_MODULE_2__props__["a" /* default */],
+  mixins: [__WEBPACK_IMPORTED_MODULE_2__props__["a" /* default */]],
   mounted: function mounted() {
     if (this.autoinit) {
       this.initialize();
@@ -105,9 +106,13 @@ return /******/ (function(modules) { // webpackBootstrap
   },
   activated: function activated() {
     var editor = this.simplemde;
-    if (!editor) return;
+    if (!editor) {
+      return;
+    }
     var isActive = editor.isSideBySideActive() || editor.isPreviewActive();
-    if (isActive) editor.toggleFullScreen();
+    if (isActive) {
+      editor.toggleFullScreen();
+    }
   },
 
   methods: {
@@ -130,12 +135,26 @@ return /******/ (function(modules) { // webpackBootstrap
         sanitize: this.sanitize
       });
       // 实例化编辑器
-      this.simplemde = new __WEBPACK_IMPORTED_MODULE_0_simplemde___default.a(configs);
+      this.simplemde = this.initSimpleMDE(configs);
       // 添加自定义 previewClass
       var className = this.previewClass || '';
       this.addPreviewClass(className);
       // 绑定事件
       this.bindingEvents();
+    },
+    initSimpleMDE: function initSimpleMDE(configs) {
+      var simplemde = new __WEBPACK_IMPORTED_MODULE_0_simplemde___default.a(configs);
+      this.lookForExtraKeys(simplemde);
+      return simplemde;
+    },
+    lookForExtraKeys: function lookForExtraKeys(simplemde) {
+      var editor = simplemde;
+      var extraKeys = Object.keys(this.extraKeys);
+      if (extraKeys.length) {
+        extraKeys.forEach(function _key(key) {
+          editor.codemirror.options.extraKeys[key] = this.extraKeys[key];
+        });
+      }
     },
     bindingEvents: function bindingEvents() {
       var _this = this;
@@ -144,7 +163,6 @@ return /******/ (function(modules) { // webpackBootstrap
         _this.$emit('input', _this.simplemde.value());
       });
       __WEBPACK_IMPORTED_MODULE_3__events__["a" /* default */].forEach(function (event) {
-        console.log(event);
         _this.simplemde.codemirror.on(event, function (e) {
           _this.$emit(event, e);
         });
@@ -784,6 +802,13 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_10__;
     },
     configs: {
       type: Object,
+      default: function _default() {
+        return {};
+      }
+    },
+    extraKeys: {
+      type: Object,
+      required: false,
       default: function _default() {
         return {};
       }

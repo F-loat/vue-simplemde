@@ -1,14 +1,13 @@
 <template>
-<div class="markdown-editor">
-  <textarea :name="name"></textarea>
-</div>
+  <div class="markdown-editor">
+    <textarea :name="name"></textarea>
+  </div>
 </template>
 
 <script>
 import SimpleMDE from 'simplemde';
 import marked from 'marked';
 import props from './props';
-
 import events from './events';
 
 export default {
@@ -31,11 +30,14 @@ export default {
   },
   methods: {
     initialize() {
-      const configs = Object.assign({
-        element: this.$el.firstElementChild,
-        initialValue: this.value,
-        renderingConfig: {},
-      }, this.configs);
+      const configs = Object.assign(
+        {
+          element: this.$el.firstElementChild,
+          initialValue: this.value,
+          renderingConfig: {},
+        },
+        this.configs,
+      );
       // 同步 value 和 initialValue 的值
       if (configs.initialValue) {
         this.$emit('input', configs.initialValue);
@@ -49,12 +51,26 @@ export default {
         sanitize: this.sanitize,
       });
       // 实例化编辑器
-      this.simplemde = new SimpleMDE(configs);
+      this.simplemde = this.initSimpleMDE(configs);
       // 添加自定义 previewClass
       const className = this.previewClass || '';
       this.addPreviewClass(className);
       // 绑定事件
       this.bindingEvents();
+    },
+    initSimpleMDE(configs) {
+      const simplemde = new SimpleMDE(configs);
+      this.lookForExtraKeys(simplemde);
+      return simplemde;
+    },
+    lookForExtraKeys(simplemde) {
+      const editor = simplemde;
+      const extraKeys = Object.keys(this.extraKeys);
+      if (extraKeys.length) {
+        extraKeys.forEach(function _key(key) {
+          editor.codemirror.options.extraKeys[key] = this.extraKeys[key];
+        });
+      }
     },
     bindingEvents() {
       this.simplemde.codemirror.on('change', () => {
