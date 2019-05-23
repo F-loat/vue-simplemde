@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import markdownEditor from 'vue-simplemde/src/markdown-editor';
+import markdownEditor from 'vue-simplemde/src/markdown-editor.vue';
 import hljs from 'highlight.js';
 
 window.hljs = hljs;
@@ -102,7 +102,6 @@ body {
 .editor-wrap {
   width: 100%;
   max-width: 900px;
-  padding: 0 10px;
   float: left;
 }
 
