@@ -83,5 +83,5 @@
 </script>
 
 <style>
-  @import '~simplemde/dist/simplemde.min.css';
+  @import '~easymde/dist/easymde.min.css';
 </style>

@@ -34,7 +34,7 @@ npm install vue-simplemde --save
 </script>
 
 <style>
-  @import '~simplemde/dist/simplemde.min.css';
+  @import '~easymde/dist/easymde.min.css';
 </style>
 ```
 
@@ -43,7 +43,7 @@ npm install vue-simplemde --save
 ``` javascript
 import Vue from 'vue'
 import VueSimplemde from 'vue-simplemde'
-import 'simplemde/dist/simplemde.min.css'
+import 'easymde/dist/easymde.min.css';
 
 Vue.use(VueSimplemde)
 ```
@@ -76,7 +76,7 @@ $ npm install --save github-markdown-css
 </template>
 
 <style>
-  @import '~simplemde/dist/simplemde.min.css';
+  @import '~easymde/dist/easymde.min.css';
   @import '~github-markdown-css';
 </style>
 ```
@@ -101,13 +101,13 @@ $ npm install --save highlight.js
 </script>
 
 <style>
-  @import '~simplemde/dist/simplemde.min.css';
+  @import '~easymde/dist/easymde.min.css';
   @import '~highlight.js/styles/atom-one-dark.css';
   /* Highlight theme list: https://github.com/isagalaev/highlight.js/tree/master/src/styles */
 </style>
 ```
 
-## Editor Theme ([simplemde-theme-base](https://github.com/xcatliu/simplemde-theme-base/wiki/List-of-themes))
+## Editor Theme ([simplemde-theme-base](https://github.com/xcatliu/simplemde-theme-base/wiki/List-of-themes)) [deprecated?]
 > e.g. use simplemde-theme-base theme
 
 ### install

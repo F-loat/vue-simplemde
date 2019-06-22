@@ -4,6 +4,6 @@ module.exports = {
     { src: '~plugins/nuxt-simplemde-plugin.js', ssr: false }
   ],
   css: [
-    'simplemde/dist/simplemde.min.css'
+    'easymde/dist/easymde.min.css'
   ]
 }
