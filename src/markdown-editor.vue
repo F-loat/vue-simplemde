@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import SimpleMDE from 'simplemde';
+import EasyMDE from 'easymde';
 import marked from 'marked';
 
 export default {
@@ -43,7 +43,7 @@ export default {
     if (this.autoinit) this.initialize();
   },
   activated() {
-    const editor = this.simplemde;
+    const editor = this.easymde;
     if (!editor) return;
     const isActive = editor.isSideBySideActive() || editor.isPreviewActive();
     if (isActive) editor.toggleFullScreen();
@@ -70,7 +70,7 @@ export default {
       marked.setOptions({ sanitize: this.sanitize });
 
       // 实例化编辑器
-      this.simplemde = new SimpleMDE(configs);
+      this.easymde = new EasyMDE(configs);
 
       // 添加自定义 previewClass
       const className = this.previewClass || '';
@@ -80,12 +80,12 @@ export default {
       this.bindingEvents();
     },
     bindingEvents() {
-      this.simplemde.codemirror.on('change', () => {
-        this.$emit('input', this.simplemde.value());
+      this.easymde.codemirror.on('change', () => {
+        this.$emit('input', this.easymde.value());
       });
     },
     addPreviewClass(className) {
-      const wrapper = this.simplemde.codemirror.getWrapperElement();
+      const wrapper = this.easymde.codemirror.getWrapperElement();
       const preview = document.createElement('div');
       wrapper.nextSibling.className += ` ${className}`;
       preview.className = `editor-preview ${className}`;
@@ -93,12 +93,12 @@ export default {
     },
   },
   destroyed() {
-    this.simplemde = null;
+    this.easymde = null;
   },
   watch: {
     value(val) {
-      if (val === this.simplemde.value()) return;
-      this.simplemde.value(val);
+      if (val === this.easymde.value()) return;
+      this.easymde.value(val);
     },
   },
 };
