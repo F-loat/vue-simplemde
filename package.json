@@ -28,8 +28,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "marked": "*",
-    "simplemde": "*"
+    "easymde": "https://github.com/Ionaru/easy-markdown-editor",
+    "marked": "*"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
