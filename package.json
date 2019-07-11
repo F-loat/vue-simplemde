@@ -13,7 +13,7 @@
     "github-markdown-css": "^3.0.1",
     "highlight.js": "^9.15.8",
     "vue": "^2.6.10",
-    "vue-simplemde": "^0.5.2"
+    "vue-simplemde": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.9.2",

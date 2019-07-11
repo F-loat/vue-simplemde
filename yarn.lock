@@ -8417,10 +8417,10 @@ vue-loader@^15.7.0:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
-vue-simplemde@^0.5.2:
-  version "0.5.2"
-  resolved "https://registry.npmjs.org/vue-simplemde/-/vue-simplemde-0.5.2.tgz#11d6a2297346aa1563a6e04c29168c8dcd527ea0"
-  integrity sha512-JccYiU/DCk2+q0+jwV/gru+2XUA8V/jHPN4R/I7C4yKqEfk/TnxtbM5n7NQ+DrGZmt6YfkliH0nnyd9PD8u45A==
+vue-simplemde@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.npmjs.org/vue-simplemde/-/vue-simplemde-1.0.0.tgz#cba066d0381137dc0629da749534a4c759307527"
+  integrity sha512-lOugLrIJTxJ33wPC/aZKhiKO6K+AiDCSLVZyUkTYzthRGINefu2A6f5dZtb1Po1Nl6XcrXCo9qLQmJycRGL6Kg==
   dependencies:
     marked "*"
     simplemde "*"
