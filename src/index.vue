@@ -1,5 +1,5 @@
 <template>
-  <div class="markdown-editor">
+  <div class="vue-simplemde">
     <textarea :name="name"></textarea>
   </div>
 </template>
@@ -9,7 +9,7 @@ import SimpleMDE from 'simplemde';
 import marked from 'marked';
 
 export default {
-  name: 'markdown-editor',
+  name: 'vue-simplemde',
   props: {
     value: String,
     name: String,
@@ -105,11 +105,11 @@ export default {
 </script>
 
 <style>
-.markdown-editor .markdown-body {
+.vue-simplemde .markdown-body {
   padding: 0.5em
 }
 
-.markdown-editor .editor-preview-active, .markdown-editor .editor-preview-active-side {
+.vue-simplemde .editor-preview-active, .vue-simplemde .editor-preview-active-side {
   display: block;
 }
 </style>

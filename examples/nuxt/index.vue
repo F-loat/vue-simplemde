@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <no-ssr>
-      <markdown-editor v-model="content"></markdown-editor>
+      <vue-simplemde v-model="content" />
     </no-ssr>
   </div>
 </template>

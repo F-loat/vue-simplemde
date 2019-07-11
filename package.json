@@ -2,12 +2,11 @@
   "name": "vue-simplemde",
   "version": "0.5.2",
   "description": "SimpleMDE - Markdown Editor component for Vue.js",
-  "main": "dist/vue-simplemde.min.js",
+  "main": "src/index.vue",
   "scripts": {
-    "build": "npm run build:dev && npm run build:prod",
-    "build:dev": "cross-env NODE_ENV=development webpack --progress --hide-modules",
-    "build:prod": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "lint": "./node_modules/.bin/eslint --format node_modules/eslint-friendly-formatter ./src/markdown-editor.vue"
+    "build": "vue-cli-service build --target lib --name VueSimpleMDE src/index.vue",
+    "postbuild": "node hack.js",
+    "lint": "vue-cli-service lint"
   },
   "keywords": [
     "Vue",
@@ -32,20 +31,13 @@
     "simplemde": "*"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.0.1",
-    "babel-loader": "^7.1.2",
-    "babel-preset-env": "^1.7.0",
-    "cross-env": "^5.2.0",
-    "css-loader": "^0.28.7",
-    "eslint": "^4.6.1",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-friendly-formatter": "^3.0.0",
-    "eslint-plugin-html": "^3.2.1",
-    "eslint-plugin-import": "^2.17.2",
-    "file-loader": "^1.1.5",
-    "vue-loader": "^13.3.0",
-    "vue-template-compiler": "^2.6.10",
-    "webpack": "^3.7.1"
+    "@vue/cli-plugin-babel": "^3.9.0",
+    "@vue/cli-plugin-eslint": "^3.9.0",
+    "@vue/cli-service": "^3.9.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }

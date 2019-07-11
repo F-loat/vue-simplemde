@@ -1,26 +1,26 @@
 <template>
   <div>
     <!-- use v-model control value -->
-    <markdown-editor v-model="content" ref="markdownEditor"></markdown-editor>
+    <vue-simplemde v-model="content" ref="markdownEditor" />
 
     <!-- use event control value -->
-    <markdown-editor :value="content" @input="handleInput"></markdown-editor>
+    <vue-simplemde :value="content" @input="handleInput" />
 
     <!-- add config -->
-    <markdown-editor :configs="configs"></markdown-editor>
+    <vue-simplemde :configs="configs" />
 
     <!-- disable auto init -->
-    <markdown-editor :autoinit="false"></markdown-editor>
+    <vue-simplemde :autoinit="false" />
   </div>
 </template>
 
 <script>
-  import markdownEditor from 'vue-simplemde/src/markdown-editor'
+  import VueSimplemde from 'vue-simplemde/src/vue-simplemde'
 
   // Base example
   export default {
     components: {
-      markdownEditor
+      VueSimplemde
     },
     data () {
       return {
@@ -35,7 +35,7 @@
   // Complete example
   export default {
     components: {
-      markdownEditor
+      VueSimplemde
     },
     data () {
       return {

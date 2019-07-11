@@ -20,15 +20,15 @@ npm install vue-simplemde --save
 
 ``` vue
 <template>
-  <markdown-editor v-model="content" ref="markdownEditor"></markdown-editor>
+  <vue-simplemde v-model="content" ref="markdownEditor" />
 </template>
 
 <script>
-  import markdownEditor from 'vue-simplemde/src/markdown-editor'
+  import VueSimplemde from 'vue-simplemde'
 
   export default {
     components: {
-      markdownEditor
+      VueSimplemde
     }
   }
 </script>
@@ -45,7 +45,7 @@ import Vue from 'vue'
 import VueSimplemde from 'vue-simplemde'
 import 'simplemde/dist/simplemde.min.css'
 
-Vue.use(VueSimplemde)
+Vue.component('vue-simplemde', VueSimplemde)
 ```
 
 ## Props
@@ -72,7 +72,7 @@ $ npm install --save github-markdown-css
 ### use
 ``` vue
 <template>
-  <markdown-editor preview-class="markdown-body"></markdown-editor>
+  <vue-simplemde preview-class="markdown-body" />
 </template>
 
 <style>
@@ -91,7 +91,7 @@ $ npm install --save highlight.js
 ### use
 ``` vue
 <template>
-  <markdown-editor :highlight="true"></markdown-editor>
+  <vue-simplemde :highlight="true" />
 </template>
 
 <script>
