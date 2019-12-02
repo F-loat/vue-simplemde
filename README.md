@@ -123,6 +123,12 @@ $ npm install --save simplemde-theme-base
 </style>
 ```
 
+### e.g.
+
+[Dark Theme](https://github.com/xcatliu/simplemde-theme-dark)
+
+![Screenshot of SimpleMDE Theme Dark](https://github.com/xcatliu/simplemde-theme-dark/raw/master/docs/screenshot.png)
+
 ## Configuration
 > SimpleMD's config
 
