@@ -2,6 +2,7 @@ module.exports = {
   css: {
     extract: false,
   },
+  productionSourceMap: false,
   configureWebpack: {
     externals: {
       simplemde: {

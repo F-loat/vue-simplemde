@@ -1178,12 +1178,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"21899888-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=2ed91d58&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-simplemde"},[_c('textarea',{staticClass:"vue-simplemde-textarea",attrs:{"name":_vm.name},domProps:{"value":_vm.modelVal},on:{"input":_vm.handleInput}})])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"21899888-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=7ed411e4&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-simplemde"},[_c('textarea',{staticClass:"vue-simplemde-textarea",attrs:{"name":_vm.name},domProps:{"value":_vm.modelVal},on:{"input":function($event){return _vm.handleInput($event.target.value)}}})])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=2ed91d58&
+// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=7ed411e4&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
@@ -1289,7 +1289,9 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
       var _this = this;
 
       this.simplemde.codemirror.on('change', function () {
-        _this.$emit('input', _this.simplemde.value());
+        var val = _this.simplemde.value();
+
+        _this.handleInput(val);
       });
     },
     addPreviewClass: function addPreviewClass(className) {
@@ -1299,8 +1301,9 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
       preview.className = "editor-preview ".concat(className);
       wrapper.appendChild(preview);
     },
-    handleInput: function handleInput(e) {
-      this.$emit('input', e.target.value);
+    handleInput: function handleInput(val) {
+      this.isValueUpdateFromInner = true;
+      this.$emit('input', val);
     }
   },
   destroyed: function destroyed() {
@@ -1308,7 +1311,11 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
   },
   watch: {
     value: function value(val) {
-      if (val === this.simplemde.value()) return;
+      if (this.isValueUpdateFromInner) {
+        this.isValueUpdateFromInner = false;
+        return;
+      }
+
       this.simplemde.value(val);
       this.modelVal = val;
     }
@@ -1446,4 +1453,3 @@ var component = normalizeComponent(
 
 /******/ })["default"];
 });
-//# sourceMappingURL=VueSimpleMDE.umd.js.map
