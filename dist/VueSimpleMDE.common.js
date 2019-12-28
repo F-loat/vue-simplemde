@@ -1169,12 +1169,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"21899888-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=7ed411e4&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"21899888-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=6afa4194&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-simplemde"},[_c('textarea',{staticClass:"vue-simplemde-textarea",attrs:{"name":_vm.name},domProps:{"value":_vm.modelVal},on:{"input":function($event){return _vm.handleInput($event.target.value)}}})])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=7ed411e4&
+// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=6afa4194&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.object.assign.js
 var es6_object_assign = __webpack_require__("f751");
@@ -1231,6 +1231,9 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
       default: function _default() {
         return {};
       }
+    },
+    previewRender: {
+      type: Function
     }
   },
   data: function data() {
@@ -1252,6 +1255,7 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
       var configs = Object.assign({
         element: this.$el.firstElementChild,
         initialValue: this.value,
+        previewRender: this.previewRender,
         renderingConfig: {}
       }, this.configs); // 同步 value 和 initialValue 的值
 
