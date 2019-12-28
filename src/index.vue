@@ -13,6 +13,9 @@
 import SimpleMDE from 'simplemde';
 import marked from 'marked';
 
+import 'katex/dist/katex.min.css';
+import renderMathInElement from 'katex/contrib/auto-render/auto-render';
+
 export default {
   name: 'vue-simplemde',
   props: {
@@ -51,6 +54,16 @@ export default {
   },
   mounted() {
     if (this.autoinit) this.initialize();
+    setInterval(() => {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: "$", right: "$", display: false},
+          {left: "$$", right: "$$", display: true},
+          {left: "\\(", right: "\\)", display: false},
+          {left: "\\[", right: "\\]", display: true},
+        ],
+      });
+    }, 250);
   },
   deactivated() {
     const editor = this.simplemde;
