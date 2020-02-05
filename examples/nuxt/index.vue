@@ -1,8 +1,8 @@
 <template>
   <div class="wrap">
-    <no-ssr>
+    <client-only>
       <vue-simplemde v-model="content" />
-    </no-ssr>
+    </client-only>
   </div>
 </template>
 
