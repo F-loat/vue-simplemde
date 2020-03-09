@@ -17,22 +17,6 @@
 <script>
 import VueSimplemde from 'vue-simplemde';
 
-// Base example
-export default {
-  components: {
-    VueSimplemde,
-  },
-  data() {
-    return {
-      content: '',
-      configs: {
-        spellChecker: false, // disable spell check
-      },
-    };
-  },
-};
-
-// Complete example
 export default {
   components: {
     VueSimplemde,

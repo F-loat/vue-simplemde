@@ -60,6 +60,16 @@ Vue.component('vue-simplemde', VueSimplemde)
 | configs | Object | {} | [SimpleMDE's config](#configuration) |
 | previewRender | Function | - | configs.previewRender |
 
+## Methods
+
+``` js
+this.$refs.markdownEditor.simplemde.togglePreview();
+```
+
+* [examples/index.vue](./examples/index.vue)
+
+* [simplemde.js](https://github.com/sparksuite/simplemde-markdown-editor/blob/6abda7ab68cc20f4aca870eb243747951b90ab04/src/js/simplemde.js#L1908-L2026)
+
 ## Markdown style
 > e.g. use Github's markdown style
 
