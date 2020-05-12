@@ -98,6 +98,11 @@ export default {
         const val = this.simplemde.value();
         this.handleInput(val);
       });
+      
+      this.simplemde.codemirror.on('blur', () => {
+        const val = this.simplemde.value();
+        this.handleBlur(val);
+      });
     },
     addPreviewClass(className) {
       const wrapper = this.simplemde.codemirror.getWrapperElement();
@@ -109,6 +114,10 @@ export default {
     handleInput(val) {
       this.isValueUpdateFromInner = true;
       this.$emit('input', val);
+    },
+    handleBlur(val) {
+      this.isValueUpdateFromInner = true;
+      this.$emit('blur', val);
     },
   },
   destroyed() {
