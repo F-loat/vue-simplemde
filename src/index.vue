@@ -118,7 +118,7 @@ export default {
     handleBlur(val) {
       this.isValueUpdateFromInner = true;
       this.$emit('blur', val);
-    }
+    },
   },
   destroyed() {
     this.simplemde = null;
