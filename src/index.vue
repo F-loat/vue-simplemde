@@ -63,12 +63,13 @@ export default {
   },
   methods: {
     initialize() {
-      const configs = Object.assign({
+      const configs = {
         element: this.$el.firstElementChild,
         initialValue: this.value,
         previewRender: this.previewRender,
         renderingConfig: {},
-      }, this.configs);
+        ...this.configs,
+      };
 
       // 同步 value 和 initialValue 的值
       if (configs.initialValue) {
@@ -98,7 +99,7 @@ export default {
         const val = this.simplemde.value();
         this.handleInput(val);
       });
-      
+
       this.simplemde.codemirror.on('blur', () => {
         const val = this.simplemde.value();
         this.handleBlur(val);
