@@ -46,6 +46,12 @@ export default {
     previewRender: {
       type: Function,
     },
+    focusLastLine: {
+      type: Boolean,
+      default() {
+        return false;
+      },
+    },
   },
   data() {
     return {
@@ -93,6 +99,12 @@ export default {
 
       // 绑定事件
       this.bindingEvents();
+
+      // Auto-Focus the last line of the CodeMirror Instance
+      if (this.focusLastLine) {
+        this.simplemde.codemirror.focus();
+        this.simplemde.codemirror.setCursor(this.simplemde.codemirror.lineCount(), 0);
+      }
     },
     bindingEvents() {
       this.simplemde.codemirror.on('change', () => {
