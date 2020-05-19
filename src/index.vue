@@ -93,6 +93,11 @@ export default {
 
       // 绑定事件
       this.bindingEvents();
+
+      // 初始化完成
+      this.$nextTick(() => {
+       this.$emit('initialized', this.simplemde);
+     });
     },
     bindingEvents() {
       this.simplemde.codemirror.on('change', () => {

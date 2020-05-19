@@ -60,6 +60,14 @@ Vue.component('vue-simplemde', VueSimplemde)
 | configs | Object | {} | [SimpleMDE's config](#configuration) |
 | previewRender | Function | - | configs.previewRender |
 
+## Events
+
+| property | describe | arguments |
+| ----| ----- | ---- |
+| input | Triggered when the Input value changes | value |
+| blur | Triggered when the Input loses focus | value |
+| initialized | Triggered when initialization is complete | simplemde |
+
 ## Methods
 
 ``` js
