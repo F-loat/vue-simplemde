@@ -96,8 +96,8 @@ export default {
 
       // 初始化完成
       this.$nextTick(() => {
-       this.$emit('initialized', this.simplemde);
-     });
+        this.$emit('initialized', this.simplemde);
+      });
     },
     bindingEvents() {
       this.simplemde.codemirror.on('change', () => {
