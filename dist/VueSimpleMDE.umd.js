@@ -2549,12 +2549,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"e5651cda-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=bb2e18b8&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-simplemde"},[_c('textarea',{staticClass:"vue-simplemde-textarea",attrs:{"name":_vm.name},domProps:{"value":_vm.modelVal},on:{"input":function($event){return _vm.handleInput($event.target.value)}}})])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"39020d78-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=0107318d&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-simplemde"},[_c('textarea',{staticClass:"vue-simplemde-textarea",attrs:{"name":_vm.name},domProps:{"value":_vm.value},on:{"input":function($event){return _vm.handleInput($event.target.value)}}})])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=bb2e18b8&
+// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=0107318d&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.js
 var es_symbol = __webpack_require__("a4d3");
@@ -2703,7 +2703,7 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
   },
   data: function data() {
     return {
-      modelVal: ''
+      isValueUpdateFromInner: false
     };
   },
   mounted: function mounted() {
@@ -2755,7 +2755,11 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
     bindingEvents: function bindingEvents() {
       var _this2 = this;
 
-      this.simplemde.codemirror.on('change', function () {
+      this.simplemde.codemirror.on('change', function (instance, changeObj) {
+        if (changeObj.origin === 'setValue') {
+          return;
+        }
+
         var val = _this2.simplemde.value();
 
         _this2.handleInput(val);
@@ -2789,11 +2793,9 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
     value: function value(val) {
       if (this.isValueUpdateFromInner) {
         this.isValueUpdateFromInner = false;
-        return;
+      } else {
+        this.simplemde.value(val);
       }
-
-      this.simplemde.value(val);
-      this.modelVal = val;
     }
   }
 });
