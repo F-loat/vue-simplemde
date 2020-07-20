@@ -63,13 +63,12 @@ export default {
   },
   methods: {
     initialize() {
-      const configs = {
+      const configs = Object.assign({
         element: this.$el.firstElementChild,
         initialValue: this.value,
         previewRender: this.previewRender,
         renderingConfig: {},
-        ...this.configs,
-      };
+      }, this.configs);
 
       // 同步 value 和 initialValue 的值
       if (configs.initialValue) {
