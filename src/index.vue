@@ -3,7 +3,7 @@
     <textarea
       class="vue-simplemde-textarea"
       :name="name"
-      :value="value"
+      :value="modelValue"
       @input="handleInput($event.target.value)"
     />
   </div>
@@ -15,8 +15,13 @@ import marked from 'marked';
 
 export default {
   name: 'vue-simplemde',
+  model: {
+    prop: 'modelValue',
+    event: 'update:modelValue',
+  },
   props: {
     value: String,
+    modelValue: String,
     name: String,
     previewClass: String,
     autoinit: {
@@ -65,14 +70,14 @@ export default {
     initialize() {
       const configs = Object.assign({
         element: this.$el.firstElementChild,
-        initialValue: this.value,
+        initialValue: this.modelValue || this.value,
         previewRender: this.previewRender,
         renderingConfig: {},
       }, this.configs);
 
-      // 同步 value 和 initialValue 的值
+      // 同步 modelValue 和 initialValue 的值
       if (configs.initialValue) {
-        this.$emit('input', configs.initialValue);
+        this.$emit('update:modelValue', configs.initialValue);
       }
 
       // 判断是否开启代码高亮
@@ -121,7 +126,7 @@ export default {
     },
     handleInput(val) {
       this.isValueUpdateFromInner = true;
-      this.$emit('input', val);
+      this.$emit('update:modelValue', val);
     },
     handleBlur(val) {
       this.isValueUpdateFromInner = true;
@@ -132,7 +137,7 @@ export default {
     this.simplemde = null;
   },
   watch: {
-    value(val) {
+    modelValue(val) {
       if (this.isValueUpdateFromInner) {
         this.isValueUpdateFromInner = false;
       } else {
