@@ -41,5 +41,8 @@
     "eslint": "^7.4.0",
     "eslint-plugin-vue": "^6.2.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "resolutions": {
+    "marked": "^3.0.8"
   }
 }
