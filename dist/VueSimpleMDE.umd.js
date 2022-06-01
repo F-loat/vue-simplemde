@@ -1599,12 +1599,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"a0b5f318-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=61c27503&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"01889066-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/index.vue?vue&type=template&id=0e49930f&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-simplemde"},[_c('textarea',{staticClass:"vue-simplemde-textarea",attrs:{"name":_vm.name},domProps:{"value":_vm.modelValue},on:{"input":function($event){return _vm.handleInput($event.target.value)}}})])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=61c27503&
+// CONCATENATED MODULE: ./src/index.vue?vue&type=template&id=0e49930f&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.assign.js
 var es_object_assign = __webpack_require__("cca6");
@@ -1644,6 +1644,12 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
     name: String,
     previewClass: String,
     autoinit: {
+      type: Boolean,
+      "default": function _default() {
+        return true;
+      }
+    },
+    forceSync: {
       type: Boolean,
       "default": function _default() {
         return true;
@@ -1761,7 +1767,7 @@ var external_marked_default = /*#__PURE__*/__webpack_require__.n(external_marked
   },
   watch: {
     modelValue: function modelValue(val) {
-      if (this.isValueUpdateFromInner) {
+      if (!this.forceSync && this.isValueUpdateFromInner) {
         this.isValueUpdateFromInner = false;
       } else {
         var pos = this.simplemde.codemirror.getCursor();

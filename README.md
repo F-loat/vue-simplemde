@@ -169,4 +169,4 @@ $ npm install --save simplemde-theme-base
 
 vue-simplemde is open source and released under the MIT Licence.
 
-Copyright (c) 2018 F-loat
+Copyright (c) 2022 F-loat
