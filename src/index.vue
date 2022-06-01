@@ -127,6 +127,7 @@ export default {
     handleInput(val) {
       this.isValueUpdateFromInner = true;
       this.$emit('update:modelValue', val);
+      this.$emit('input', val);
     },
     handleBlur(val) {
       this.isValueUpdateFromInner = true;
