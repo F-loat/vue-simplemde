@@ -141,7 +141,9 @@ export default {
       if (this.isValueUpdateFromInner) {
         this.isValueUpdateFromInner = false;
       } else {
+        const pos = this.simplemde.codemirror.getCursor();
         this.simplemde.value(val);
+        this.simplemde.codemirror.setSelection(pos);
       }
     },
   },
