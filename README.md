@@ -55,6 +55,7 @@ Vue.component('vue-simplemde', VueSimplemde)
 | name | String | None | The name of the control. |
 | preview-class | String | None | Custom preview style class |
 | autoinit | Boolean | true | Automatic initialization |
+| forceSync | Boolean | true | Sync value to simplemde each time |
 | highlight | Boolean | false | Is it open to highlight |
 | sanitize | Boolean | false | HTML that does not render input after opening |
 | configs | Object | {} | [SimpleMDE's config](#configuration) |
