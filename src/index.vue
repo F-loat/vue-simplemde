@@ -30,6 +30,12 @@ export default {
         return true;
       },
     },
+    forceSync: {
+      type: Boolean,
+      default() {
+        return true;
+      },
+    },
     highlight: {
       type: Boolean,
       default() {
@@ -139,7 +145,7 @@ export default {
   },
   watch: {
     modelValue(val) {
-      if (this.isValueUpdateFromInner) {
+      if (!this.forceSync && this.isValueUpdateFromInner) {
         this.isValueUpdateFromInner = false;
       } else {
         const pos = this.simplemde.codemirror.getCursor();
